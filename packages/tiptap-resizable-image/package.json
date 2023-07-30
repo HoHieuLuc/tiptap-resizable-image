@@ -1,0 +1,36 @@
+{
+  "name": "tiptap-resizable-image",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --dts --minify --treeshake --external react",
+    "dev": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "@tiptap/core": "^2.0.4",
+    "@tiptap/pm": "^2.0.4",
+    "@tiptap/react": "^2.0.4",
+    "@types/react": "^18.2.17",
+    "react": "^18.2.0",
+    "react-moveable": "^0.54.1",
+    "tsup": "^7.1.0",
+    "tsconfig": "workspace:*",
+    "eslint-config-custom": "workspace:*"
+  },
+  "peerDependencies": {
+    "@tiptap/core": ">=2",
+    "@tiptap/pm": ">=2",
+    "@tiptap/react": ">=2",
+    "react": ">=18"
+  }
+}
