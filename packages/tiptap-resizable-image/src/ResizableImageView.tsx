@@ -12,22 +12,22 @@ type ImageProps = React.DetailedHTMLProps<
 
 const Moveable = makeMoveable<ScalableProps>([Scalable]);
 
-const ResizableImageView = ({
-  updateAttributes,
-  ...props
-}: ResizableImageNodeViewRenderedProps) => {
-  const [imageFocused, setImageFocused] = useState(false);
-  const imageRef = useClickOutside<HTMLImageElement>(() =>
-    setImageFocused(false)
-  );
+const ResizableImageView = (
+  nodeViewRenderedProps: ResizableImageNodeViewRenderedProps
+) => {
+  const { updateAttributes, ...props } = nodeViewRenderedProps;
+
+  const [focused, setFocused] = useState(false);
+  const imageRef = useClickOutside<HTMLImageElement>(() => setFocused(false));
 
   const attrs = props.node.attrs;
   const options = props.extension.options;
+  const disabled = !props.editor.isEditable;
 
   const { width, height } = attrs;
-  const isResponsive = attrs['data-keep-ratio'];
+  const keepRatio = attrs['data-keep-ratio'];
 
-  const style: CSSProperties | false = !isResponsive && {
+  const style: CSSProperties | false = !keepRatio && {
     width,
     height,
     objectFit: 'fill',
@@ -38,30 +38,32 @@ const ResizableImageView = ({
     style: {
       ...(style || {}),
       maxWidth: width || options.maxWidth,
-    }
+    },
   };
+
+  if (disabled) {
+    return (
+      <NodeViewWrapper className='image-component'>
+        <img {...sharedImageProps} />
+      </NodeViewWrapper>
+    );
+  }
 
   return (
     <NodeViewWrapper className='image-component' data-drag-handle>
       <img
         {...sharedImageProps}
         ref={imageRef}
-        onClick={() => setImageFocused(true)}
-        onDrag={() => setImageFocused(true)}
-        // TODO:
-        // onContextMenu={showContextMenu((close) => {
-        //   setIsImageFocused(true);
-        //   return (
-        //     <ImageContextMenu
-        //       onClick={() => {
-        //         close();
-        //         open();
-        //       }}
-        //     />
-        //   );
-        // })}
+        onClick={() => setFocused(true)}
+        onDrag={() => setFocused(true)}
+        onContextMenu={(event) => {
+          options.onContextMenu?.(event, {
+            setFocused,
+            ...nodeViewRenderedProps,
+          });
+        }}
       />
-      {imageFocused && (
+      {focused && (
         <div className='ghost' style={{ position: 'absolute', top: 0 }}>
           <img
             {...sharedImageProps}
@@ -70,9 +72,9 @@ const ResizableImageView = ({
         </div>
       )}
       <Moveable
-        target={imageFocused ? imageRef : null}
+        target={focused ? imageRef : null}
         scalable={true}
-        keepRatio={isResponsive}
+        keepRatio={keepRatio}
         origin={false}
         throttleScale={0}
         renderDirections={['se', 'nw', 'ne', 'sw']}
@@ -94,7 +96,7 @@ const ResizableImageView = ({
           });
           e.target.style.transform = '';
 
-          setImageFocused(false);
+          setFocused(false);
         }}
       />
     </NodeViewWrapper>

@@ -47,3 +47,4 @@ p:has(span.node-imageComponent)[style*="text-align: left"] {
 p:has(span.node-imageComponent)[style*="text-align: justify"] {
   justify-content: space-between;
 }
+

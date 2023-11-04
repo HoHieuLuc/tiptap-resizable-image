@@ -14,6 +14,7 @@ export default Node.create<ResizableImageOptions>({
   group: 'inline',
   inline: true,
   draggable: true,
+  atom: true,
 
   addOptions(): ResizableImageOptions {
     return {
@@ -42,12 +43,6 @@ export default Node.create<ResizableImageOptions>({
       height: {
         default: this.options.defaultHeight,
       },
-      // 'data-original-width': {
-      //   default: this.options.defaultWidth,
-      // },
-      // 'data-original-height': {
-      //   default: this.options.defaultHeight,
-      // },
       'data-keep-ratio': {
         parseHTML: (element) => {
           return element.getAttribute('data-keep-ratio') === 'true';
@@ -137,26 +132,26 @@ export default Node.create<ResizableImageOptions>({
               return true;
             }
 
-            if (!files || files.length === 0) {
+            if (!files || files.length === 0 || !this.options.onUpload) {
               return false;
             }
 
             // handle pasting file contents
-            // for (const file of files) {
-            //   void imageService.handleImagePasting(this.editor, file);
-            // }
+            for (const file of files) {
+              void this.options.onUpload(file, this.editor);
+            }
             return true;
           },
           handleDrop: (_, dragEvent) => {
             dragEvent.preventDefault();
-            const droppedFiles = dragEvent.dataTransfer?.files;
-            if (!droppedFiles || droppedFiles.length === 0) {
+            const files = dragEvent.dataTransfer?.files;
+            if (!files || files.length === 0 || !this.options.onUpload) {
               return false;
             }
 
-            // for (const file of droppedFiles) {
-            //   void imageService.handleImagePasting(this.editor, file);
-            // }
+            for (const file of files) {
+              void this.options.onUpload(file, this.editor);
+            }
             return true;
           },
         },

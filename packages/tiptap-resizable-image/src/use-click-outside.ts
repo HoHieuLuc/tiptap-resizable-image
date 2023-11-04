@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from 'react';
 
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useClickOutside<T extends HTMLElement = any>(
   handler: () => void,
   events?: string[] | null,
@@ -11,7 +11,6 @@ export function useClickOutside<T extends HTMLElement = any>(
   const ref = useRef<T>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const listener = (event: any) => {
       const { target } = event ?? {};
       if (Array.isArray(nodes)) {
