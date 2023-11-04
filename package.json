@@ -7,11 +7,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@turbo/gen": "^1.9.7",
+    "@turbo/gen": "^1.10.16",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
-    "turbo": "latest"
+    "prettier": "^2.8.8",
+    "turbo": "^1.10.16"
   },
   "packageManager": "pnpm@8.6.10",
   "name": "tiptap-resizable-image"
