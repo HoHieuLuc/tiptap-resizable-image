@@ -50,6 +50,9 @@ importers:
       '@tiptap/extension-link':
         specifier: ^2.1.12
         version: 2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12)
+      '@tiptap/extension-text-align':
+        specifier: ^2.1.12
+        version: 2.1.12(@tiptap/core@2.1.12)
       '@tiptap/pm':
         specifier: ^2.1.12
         version: 2.1.12
@@ -1208,6 +1211,14 @@ packages:
 
   /@tiptap/extension-strike@2.1.12(@tiptap/core@2.1.12):
     resolution: {integrity: sha512-HlhrzIjYUT8oCH9nYzEL2QTTn8d1ECnVhKvzAe6x41xk31PjLMHTUy8aYjeQEkWZOWZ34tiTmslV1ce6R3Dt8g==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+    dev: false
+
+  /@tiptap/extension-text-align@2.1.12(@tiptap/core@2.1.12):
+    resolution: {integrity: sha512-siMlwrkgVrAxxgmZn8GOc75J7UZi2CVrP9vDHkUPPyKm/fjssYekXwGCEk4Vswii1BbOh2gt+MDsRkeYRGyDlQ==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:

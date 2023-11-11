@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10px);
+  width: rem(300px);
+
+  @media (max-width: rem(942px)) {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: rem(16px);
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+}
+
+.description {
+  font-size: rem(14px);
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-5));
+}
