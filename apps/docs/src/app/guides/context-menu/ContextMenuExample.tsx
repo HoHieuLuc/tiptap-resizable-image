@@ -2,7 +2,7 @@
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useContextMenu } from 'mantine-contextmenu';
-import ResizableImage from 'tiptap-resizable-image';
+import { ResizableImage } from 'tiptap-resizable-image';
 
 const ContextMenuExample = () => {
   const { showContextMenu } = useContextMenu();
@@ -23,7 +23,8 @@ const ContextMenuExample = () => {
             {
               key: 'delete',
               title: 'Delete this image',
-              onClick: () => payload.editor.chain().focus().deleteSelection().run(),
+              onClick: () =>
+                payload.editor.chain().focus().deleteSelection().run(),
             },
           ])(event);
         },

@@ -1,13 +1,18 @@
 'use client';
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import { ResizableImage } from 'tiptap-resizable-image';
 
-const GettingStartedExample = () => {
+import { EditorContent, useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import TextAlign from '@tiptap/extension-text-align';
+import { ImageExtensionWithPopover } from './ImageExtensionWithPopover';
+
+const ImageExtensionWithPopoverExample = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      ResizableImage.configure({
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
+      ImageExtensionWithPopover.configure({
         defaultWidth: 200,
         defaultHeight: 200,
       }),
@@ -31,5 +36,4 @@ const GettingStartedExample = () => {
     </div>
   );
 };
-
-export default GettingStartedExample;
+export default ImageExtensionWithPopoverExample;

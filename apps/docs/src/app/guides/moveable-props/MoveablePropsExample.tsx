@@ -1,15 +1,19 @@
 'use client';
-import { useEditor, EditorContent } from '@tiptap/react';
+
+import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { ResizableImage } from 'tiptap-resizable-image';
 
-const GettingStartedExample = () => {
+const MoveablePropsExample = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
       ResizableImage.configure({
         defaultWidth: 200,
         defaultHeight: 200,
+        moveableProps: {
+          renderDirections: ['se'],
+        },
       }),
     ],
     content: /* html */ `
@@ -31,5 +35,4 @@ const GettingStartedExample = () => {
     </div>
   );
 };
-
-export default GettingStartedExample;
+export default MoveablePropsExample;

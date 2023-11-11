@@ -2,6 +2,7 @@ import { Stack, Text, Title } from '@mantine/core';
 import GettingStartedExample from './GettingStartedExample';
 import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import readFile from '@/utils/read-file';
+import { CodeHighlight } from '@mantine/code-highlight';
 
 const Page = async () => {
   const componentFile = await readFile({
@@ -17,15 +18,35 @@ const Page = async () => {
   return (
     <Stack>
       <Title>Getting started</Title>
+      <Title order={2}>Installation</Title>
       <CodeHighlightTabs
-        code={['npm', 'yarn', 'pnpm'].map((item) => ({
-          code: `${item} install tiptap-resizable-image`,
-          fileName: item,
-          language: 'bash',
-        }))}
+        code={[
+          {
+            code: 'npm install tiptap-resizable-image',
+            fileName: 'npm',
+            language: 'bash',
+          },
+          {
+            code: 'yarn add tiptap-resizable-image',
+            fileName: 'yarn',
+            language: 'bash',
+          },
+          {
+            code: 'pnpm install tiptap-resizable-image',
+            fileName: 'pnpm',
+            language: 'bash',
+          },
+        ]}
         withExpandButton={false}
       />
-      <Text>Basic usage:</Text>
+      <Text>
+        Don&lsquo;t forget to import the CSS file to your application:
+      </Text>
+      <CodeHighlight
+        code={`import 'tiptap-resizable-image/styles.css';`}
+        language='tsx'
+      />
+      <Title order={2}>Basic usage:</Title>
       <CodeHighlightTabs
         code={[
           { fileName: 'Demo.tsx', code: componentCode, language: 'tsx' },

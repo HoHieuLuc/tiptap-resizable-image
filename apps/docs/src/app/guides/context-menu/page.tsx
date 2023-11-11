@@ -6,6 +6,7 @@ import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs'
 const Page = async () => {
   const code = await readFile({
     path: '/app/guides/context-menu/ContextMenuExample.tsx',
+    replaces: [['ContextMenuExample', 'Demo']],
   });
 
   return (
@@ -18,13 +19,14 @@ const Page = async () => {
           target='_blank'
         >
           mantine-contextmenu
-        </Anchor>{', '}
+        </Anchor>
+        {', '}
         you can also implement your own context menu component.
       </Text>
-      <ContextMenuExample />
       <CodeHighlightTabs
         code={[{ fileName: 'Demo.tsx', code, language: 'tsx' }]}
       />
+      <ContextMenuExample />
     </Stack>
   );
 };

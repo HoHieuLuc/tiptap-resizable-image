@@ -1,0 +1,4 @@
+.children {
+  margin-left: 25px;
+  border-left: 1px solid light-dark(var(--mantine-color-gray-4), var(--mantine-color-gray-8));
+}

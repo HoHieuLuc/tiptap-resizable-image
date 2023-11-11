@@ -1,18 +1,20 @@
 'use client';
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import { ResizableImage } from 'tiptap-resizable-image';
 
-const GettingStartedExample = () => {
+import { EditorContent, useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import { SimpleImageExtension } from './SimpleImageExtension';
+
+const SimpleImageExtensionExample = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      ResizableImage.configure({
+      SimpleImageExtension.configure({
         defaultWidth: 200,
         defaultHeight: 200,
       }),
     ],
     content: /* html */ `
+      <p>This image can't be resized anymore</p>
       <p>
         <img
           src="https://daily.jstor.org/wp-content/uploads/2016/10/Moving_Forest_1050_700.jpg"
@@ -31,5 +33,4 @@ const GettingStartedExample = () => {
     </div>
   );
 };
-
-export default GettingStartedExample;
+export default SimpleImageExtensionExample;

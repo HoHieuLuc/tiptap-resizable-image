@@ -1,4 +1,11 @@
 .main {
   display: flex;
   flex-direction: column;
+
+  :global(.container) {
+    width: 100%;
+    max-width: 928px;
+    margin-left: auto;
+    margin-right: auto
+  }
 }

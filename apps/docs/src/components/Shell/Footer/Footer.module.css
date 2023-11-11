@@ -1,5 +1,8 @@
 .footer {
-  height: 200px;
   margin-top: auto;
   padding-top: 16px;
+}
+
+.link {
+  color: light-dark(#000, var(--mantine-color-gray-5));
 }

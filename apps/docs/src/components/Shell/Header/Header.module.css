@@ -22,3 +22,33 @@
     display: block;
   }
 }
+
+.root {
+  height: 100%;
+  padding: 0 var(--mantine-spacing-md);
+  gap: var(--mantine-spacing-xs);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-xs);
+  text-decoration: none;
+  color: unset;
+}
+
+.brand-title {
+  font-weight: bold;
+  font-size: var(--mantine-font-size-xl);
+  color: white;
+
+  @media (max-width: 350px) {
+    display: none;
+  }
+}
+
+.link-action-icon {
+  @media (max-width: 430px) {
+    display: none;
+  }
+}

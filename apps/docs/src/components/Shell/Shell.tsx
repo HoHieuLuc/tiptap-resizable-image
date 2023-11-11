@@ -28,7 +28,9 @@ const Shell = ({ children }: Props) => {
       </AppShell.Navbar>
 
       <AppShell.Main className={classes.main}>
-        {children}
+        <div className='container'>
+          {children}
+        </div>
         <Footer />
       </AppShell.Main>
     </AppShell>

@@ -1,15 +1,7 @@
-import '@mantine/core/styles.layer.css';
-import '@mantine/code-highlight/styles.layer.css';
-import '@mantine/spotlight/styles.layer.css';
-import '@mantine/tiptap/styles.layer.css';
-import 'mantine-contextmenu/styles.layer.css';
-import './layout.css';
-import 'tiptap-resizable-image/styles.css';
-import '@/styles/editor.css';
-
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import Shell from '@/components/Shell/Shell';
 import { ContextMenuProvider } from 'mantine-contextmenu';
+import { theme } from './theme';
 
 export const metadata = {
   title: 'Tiptap Resizable Image',
@@ -27,7 +19,7 @@ export default function RootLayout({ children }: Props) {
         <ColorSchemeScript defaultColorScheme='auto' />
       </head>
       <body>
-        <MantineProvider withCssVariables defaultColorScheme='auto'>
+        <MantineProvider theme={theme} withCssVariables defaultColorScheme='auto'>
           <ContextMenuProvider>
             <Shell>{children}</Shell>
           </ContextMenuProvider>

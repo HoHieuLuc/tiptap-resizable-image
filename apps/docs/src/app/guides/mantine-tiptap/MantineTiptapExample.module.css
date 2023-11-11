@@ -1,0 +1,17 @@
+.toolbar {
+  z-index: 10;
+}
+
+.content {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  min-height: 300px;
+  & > div {
+    flex-grow: 1;
+  }
+
+  :global(.moveable-control-box) {
+    z-index: 9;
+  }
+}
