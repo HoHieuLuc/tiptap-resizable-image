@@ -10,7 +10,7 @@
   margin-bottom: 0;
 }
 
-.image-component img[data-keep-ratio='true'] {
+.image-component img[data-keep-ratio]:not([data-keep-ratio='false']) {
   width: 100%;
   height: auto;
   object-fit: contain;

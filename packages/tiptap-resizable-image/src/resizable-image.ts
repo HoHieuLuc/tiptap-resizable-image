@@ -43,7 +43,7 @@ export default Node.create<ResizableImageOptions>({
       },
       'data-keep-ratio': {
         parseHTML: (element) => {
-          return element.getAttribute('data-keep-ratio') === 'true';
+          return element.getAttribute('data-keep-ratio') !== 'false';
         },
         renderHTML(attributes: ResizableImageHTMLAttributes) {
           if (!attributes['data-keep-ratio']) {
@@ -132,7 +132,9 @@ export default Node.create<ResizableImageOptions>({
               return true;
             }
 
-            if (!files || files.length === 0 || !this.options.onUpload) {
+            const isPastedFromFileSystem = !clipboardEvent.clipboardData?.getData('text/html');
+
+            if (!files || files.length === 0 || !this.options.onUpload || !isPastedFromFileSystem) {
               return false;
             }
 
@@ -152,7 +154,10 @@ export default Node.create<ResizableImageOptions>({
           handleDrop: (_, dragEvent) => {
             dragEvent.preventDefault();
             const files = dragEvent.dataTransfer?.files;
-            if (!files || files.length === 0 || !this.options.onUpload) {
+
+            const isDroppedFromFileSystem = !dragEvent.dataTransfer?.getData('text/html');
+
+            if (!files || files.length === 0 || !this.options.onUpload || !isDroppedFromFileSystem) {
               return false;
             }
 

@@ -1,9 +1,9 @@
-import { ResizableImageNodeViewRenderedProps } from './resizable-image.types';
+import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
 import { NodeViewWrapper } from '@tiptap/react';
 import ResizableImageComponent from './ResizableImageComponent';
 
 const ResizableImageNodeView = (
-  props: ResizableImageNodeViewRenderedProps
+  props: ResizableImageNodeViewRendererProps
 ) => {
   return (
     <NodeViewWrapper className='image-component' data-drag-handle>

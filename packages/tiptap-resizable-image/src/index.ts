@@ -1,6 +1,4 @@
-import ResizableImage from './resizable-image';
-
-export * from './ResizableImageComponent';
+import './index.css';
 export * from './resizable-image.types';
-
-export default ResizableImage;
+export { default as ResizableImage } from './resizable-image';
+export { default as ResizableImageComponent } from './ResizableImageComponent';

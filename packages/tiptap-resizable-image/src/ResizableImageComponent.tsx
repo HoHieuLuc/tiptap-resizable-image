@@ -1,6 +1,6 @@
 import { CSSProperties, DataHTMLAttributes, useState } from 'react';
 import { makeMoveable, Scalable, ScalableProps } from 'react-moveable';
-import { ResizableImageNodeViewRenderedProps } from './resizable-image.types';
+import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
 import { useClickOutside } from './use-click-outside';
 
 type ImageProps = React.DetailedHTMLProps<
@@ -12,7 +12,7 @@ type ImageProps = React.DetailedHTMLProps<
 const Moveable = makeMoveable<ScalableProps>([Scalable]);
 
 const ResizableImageComponent = (
-  props: ResizableImageNodeViewRenderedProps
+  props: ResizableImageNodeViewRendererProps
 ) => {
   const { updateAttributes, node, extension, editor } = props;
 
@@ -33,6 +33,7 @@ const ResizableImageComponent = (
   };
 
   const sharedImageProps: ImageProps = {
+    ...options.HTMLAttributes,
     ...attrs,
     style: {
       ...(style || {}),
@@ -90,6 +91,7 @@ const ResizableImageComponent = (
 
           setFocused(false);
         }}
+        {...options.moveableProps}
       />
     </>
   );

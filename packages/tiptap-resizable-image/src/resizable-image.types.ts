@@ -2,34 +2,51 @@ import { Attribute, Range } from '@tiptap/core';
 import { NodeViewRendererProps } from '@tiptap/react';
 import { ScalableProps } from 'react-moveable';
 
+/**
+ * ResizableImage extension options.
+ */
 export interface ResizableImageOptions {
+  /** HTML attributes for the resizable image. */
   HTMLAttributes: Record<string, unknown>;
-  /** Default witdh of the image element */
+  /** Default width of the image element. */
   defaultWidth: number;
-  /** Default height of the image element */
+  /** Default height of the image element. */
   defaultHeight: number;
-  /** Max width of the image element */
+  /** Max width of the image element. */
   maxWidth: number;
-  /** Override default moveable props */
+  /** Optional moveable props to override defaults. */
   moveableProps?: Omit<ScalableProps, 'target' | 'scalable' | 'onScale' | 'onScaleEnd'>;
-  /** Handle uploading when pasting and dropping image into the editor */
+  /** Optional function to handle uploading when pasting and dropping image into the editor. */
   onUpload?: (file: File) => Promise<ResizableImageHTMLAttributes>;
+  /** Optional function to handle context menu events. */
   onContextMenu?: (
+    /** The React mouse event. */
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    /** The payload for the context menu event. */
     payload: {
-      /** Control the focused state of the image */
+      /** Function to control the focused state of the image. */
       setFocused: (value: React.SetStateAction<boolean>) => void,
-    } & ResizableImageNodeViewRenderedProps,
+    } & ResizableImageNodeViewRendererProps,
   ) => void;
 }
 
+/**
+ * HTML attributes of the image element.
+ */
 export interface ResizableImageHTMLAttributes {
+  /** The source URL of the image. */
   src: string;
+  /** Alternate text for the image. */
   alt?: string;
+  /** The title of the image. */
   title?: string;
+  /** The width of the image. */
   width?: number;
+  /** The height of the image. */
   height?: number;
+  /** Whether to keep the original aspect ratio of the image. */
   'data-keep-ratio'?: boolean;
+  /** CSS class names for the image element. */
   className?: string;
 }
 
@@ -45,7 +62,7 @@ interface Extension extends NodeViewRendererPropsExtension {
   options: ResizableImageOptions;
 }
 
-export interface ResizableImageNodeViewRenderedProps extends NodeViewRendererProps {
+export interface ResizableImageNodeViewRendererProps extends NodeViewRendererProps {
   updateAttributes(attrs: Partial<ResizableImageHTMLAttributes>): void;
   node: Node;
   extension: Extension;
