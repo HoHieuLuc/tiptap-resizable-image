@@ -5,9 +5,8 @@ import {
   ResizableImageHTMLAttributes,
   ResizableImageOptions,
 } from './resizable-image.types';
-import ResizableImageView from './ResizableImageView';
+import ResizableImageNodeView from './ResizableImageNodeView';
 import { Plugin, PluginKey } from '@tiptap/pm/state';
-// import imageService from './image.service';
 
 export default Node.create<ResizableImageOptions>({
   name: 'imageComponent',
@@ -22,7 +21,6 @@ export default Node.create<ResizableImageOptions>({
       defaultHeight: 500,
       defaultWidth: 500,
       maxWidth: 16384,
-      maxHeight: 16384,
     };
   },
 
@@ -77,7 +75,7 @@ export default Node.create<ResizableImageOptions>({
   parseHTML() {
     return [
       {
-        tag: `img[data-type="${this.name}"]`,
+        tag: 'img',
       },
     ];
   },
@@ -91,9 +89,6 @@ export default Node.create<ResizableImageOptions>({
       [
         'img',
         mergeAttributes(
-          {
-            ['data-type']: this.name,
-          },
           this.options.HTMLAttributes,
           HTMLAttributes,
         ),
@@ -105,12 +100,18 @@ export default Node.create<ResizableImageOptions>({
     return {
       setResizableImage:
         (options, position) => ({ commands }) => {
-          return commands.insertContentAt(position || this.editor.state.selection.head, {
-            type: this.name,
-            attrs: {
-              ...options,
+          return commands.insertContentAt(
+            position || this.editor.state.selection.head,
+            {
+              type: this.name,
+              attrs: {
+                ...options,
+              },
             },
-          });
+            {
+              updateSelection: false,
+            }
+          );
         },
     };
   },
@@ -127,7 +128,6 @@ export default Node.create<ResizableImageOptions>({
             if (slice.content.firstChild?.type.name === this.name) {
               this.editor.commands.setResizableImage({
                 ...(slice.content.firstChild.attrs as ResizableImageHTMLAttributes),
-                // 'data-keep-ratio': true,
               });
               return true;
             }
@@ -136,9 +136,16 @@ export default Node.create<ResizableImageOptions>({
               return false;
             }
 
-            // handle pasting file contents
+            const position = this.editor.state.selection.head;
+
             for (const file of files) {
-              void this.options.onUpload(file, this.editor);
+              this.options.onUpload(file).then(attrs => {
+                this.editor
+                  .chain()
+                  .focus()
+                  .setResizableImage(attrs, position)
+                  .run();
+              });
             }
             return true;
           },
@@ -149,10 +156,17 @@ export default Node.create<ResizableImageOptions>({
               return false;
             }
 
+            const position = this.editor.state.selection.head;
+
             for (const file of files) {
-              void this.options.onUpload(file, this.editor);
+              this.options.onUpload(file).then(attrs => {
+                this.editor
+                  .chain()
+                  .focus()
+                  .setResizableImage(attrs, position)
+                  .run();
+              });
             }
-            return true;
           },
         },
       }),
@@ -160,6 +174,6 @@ export default Node.create<ResizableImageOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ResizableImageView);
+    return ReactNodeViewRenderer(ResizableImageNodeView);
   },
 });

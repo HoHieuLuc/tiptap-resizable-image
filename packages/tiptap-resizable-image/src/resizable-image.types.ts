@@ -1,17 +1,19 @@
-import { Attribute, Editor } from '@tiptap/core';
+import { Attribute, Range } from '@tiptap/core';
 import { NodeViewRendererProps } from '@tiptap/react';
 import { ScalableProps } from 'react-moveable';
 
 export interface ResizableImageOptions {
   HTMLAttributes: Record<string, unknown>;
+  /** Default witdh of the image element */
   defaultWidth: number;
+  /** Default height of the image element */
   defaultHeight: number;
+  /** Max width of the image element */
   maxWidth: number;
-  maxHeight: number;
   /** Override default moveable props */
-  moveableProps?: Omit<ScalableProps, 'target' | 'onScale' | 'onScaleEnd'>;
+  moveableProps?: Omit<ScalableProps, 'target' | 'scalable' | 'onScale' | 'onScaleEnd'>;
   /** Handle uploading when pasting and dropping image into the editor */
-  onUpload?: (file: File, editor: Editor) => Promise<void>;
+  onUpload?: (file: File) => Promise<ResizableImageHTMLAttributes>;
   onContextMenu?: (
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
     payload: {
@@ -52,7 +54,7 @@ export interface ResizableImageNodeViewRenderedProps extends NodeViewRendererPro
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     imageComponent: {
-      setResizableImage(attrs: ResizableImageHTMLAttributes, position?: number): ReturnType;
+      setResizableImage(attrs: ResizableImageHTMLAttributes, position?: number | Range): ReturnType;
     }
   }
 }

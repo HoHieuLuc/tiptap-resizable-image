@@ -1,7 +1,6 @@
 import { CSSProperties, DataHTMLAttributes, useState } from 'react';
 import { makeMoveable, Scalable, ScalableProps } from 'react-moveable';
 import { ResizableImageNodeViewRenderedProps } from './resizable-image.types';
-import { NodeViewWrapper } from '@tiptap/react';
 import { useClickOutside } from './use-click-outside';
 
 type ImageProps = React.DetailedHTMLProps<
@@ -12,7 +11,7 @@ type ImageProps = React.DetailedHTMLProps<
 
 const Moveable = makeMoveable<ScalableProps>([Scalable]);
 
-const ResizableImageView = (
+const ResizableImageComponent = (
   nodeViewRenderedProps: ResizableImageNodeViewRenderedProps
 ) => {
   const { updateAttributes, ...props } = nodeViewRenderedProps;
@@ -43,14 +42,12 @@ const ResizableImageView = (
 
   if (disabled) {
     return (
-      <NodeViewWrapper className='image-component'>
-        <img {...sharedImageProps} />
-      </NodeViewWrapper>
+      <img {...sharedImageProps} />
     );
   }
 
   return (
-    <NodeViewWrapper className='image-component' data-drag-handle>
+    <>
       <img
         {...sharedImageProps}
         ref={imageRef}
@@ -79,12 +76,6 @@ const ResizableImageView = (
         throttleScale={0}
         renderDirections={['se', 'nw', 'ne', 'sw']}
         snappable={true}
-        className='moveable'
-        bounds={{
-          left: 10,
-          top: 10,
-          position: 'css',
-        }}
         onScale={(e) => {
           e.target.style.transform = e.drag.transform;
         }}
@@ -99,8 +90,8 @@ const ResizableImageView = (
           setFocused(false);
         }}
       />
-    </NodeViewWrapper>
+    </>
   );
 };
 
-export default ResizableImageView;
+export default ResizableImageComponent;
