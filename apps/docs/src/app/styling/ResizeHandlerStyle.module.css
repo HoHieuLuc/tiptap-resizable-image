@@ -1,0 +1,10 @@
+.root {
+  :global(.moveable-control.moveable-direction) {
+    background-color: red !important;
+    border-radius: 0 !important;
+  }
+  :global(.moveable-line.moveable-direction) {
+    background-color: red !important;
+    height: 3px !important;
+  }
+}

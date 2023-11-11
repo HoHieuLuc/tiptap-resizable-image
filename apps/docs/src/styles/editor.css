@@ -1,11 +1,21 @@
+.editor {
+  min-height: 300px;
+}
+
 .editor > div {
   min-height: 300px;
   border: 1px solid black;
   padding: 10px;
   overflow: auto;
+  &:focus-within {
+    outline: none;
+  }
 }
 
 .editor p {
   word-break: break-word;
 }
 
+.editor .moveable-control-box {
+  z-index: 9;
+}

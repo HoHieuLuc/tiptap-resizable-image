@@ -9,19 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/code-highlight": "^7.2.1",
+    "@mantine/core": "^7.2.1",
+    "@mantine/hooks": "^7.2.1",
+    "@mantine/spotlight": "^7.2.1",
+    "@mantine/tiptap": "^7.2.1",
+    "@tabler/icons-react": "^2.40.0",
+    "@tiptap/extension-link": "^2.1.12",
     "@tiptap/pm": "^2.1.12",
     "@tiptap/react": "^2.1.12",
     "@tiptap/starter-kit": "^2.1.12",
-    "next": "^13.5.6",
+    "clsx": "^2.0.0",
+    "mantine-contextmenu": "^7.1.12",
+    "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tiptap-resizable-image": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",
-    "@types/react": "^18.2.34",
-    "@types/react-dom": "^18.2.14",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
     "eslint-config-custom": "workspace:*",
+    "postcss": "^8.4.31",
+    "postcss-preset-mantine": "^1.10.0",
+    "postcss-simple-vars": "^7.0.1",
     "tsconfig": "workspace:*",
     "typescript": "^5.2.2"
   }

@@ -4,9 +4,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@turbo/gen": "^1.10.16",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",

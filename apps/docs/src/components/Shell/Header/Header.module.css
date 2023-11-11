@@ -1,0 +1,24 @@
+.icon-sun, .icon-moon {
+  width: rem(24px);
+  height: rem(24px);
+}
+
+.icon-sun {
+  @mixin dark {
+    display: none;
+  }
+
+  @mixin light {
+    display: block;
+  }
+}
+
+.icon-moon {
+  @mixin light {
+    display: none;
+  }
+
+  @mixin dark {
+    display: block;
+  }
+}

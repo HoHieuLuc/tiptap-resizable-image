@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
+  reactStrictMode: false,
+  experimental: {
+    optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
+  },
 };
