@@ -14,7 +14,6 @@ const ContextMenuExample = () => {
         defaultWidth: 200,
         defaultHeight: 200,
         onContextMenu(event, payload) {
-          payload.setFocused(true);
           showContextMenu([
             {
               key: 'copy',
@@ -31,6 +30,7 @@ const ContextMenuExample = () => {
       }),
     ],
     content: /* html */ `
+      <p>Right click this image to show the context menu</p>
       <p>
         <img
           src="https://daily.jstor.org/wp-content/uploads/2016/10/Moving_Forest_1050_700.jpg"

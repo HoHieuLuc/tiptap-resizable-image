@@ -22,7 +22,7 @@ const navbarLinks: Array<NavbarLink> = [
     href: '/guides',
     subLinks: [
       {
-        label: 'Context Menu',
+        label: 'Context menu',
         href: '/guides/context-menu',
       },
     ],

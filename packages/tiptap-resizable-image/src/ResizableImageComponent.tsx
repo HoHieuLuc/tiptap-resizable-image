@@ -12,16 +12,16 @@ type ImageProps = React.DetailedHTMLProps<
 const Moveable = makeMoveable<ScalableProps>([Scalable]);
 
 const ResizableImageComponent = (
-  nodeViewRenderedProps: ResizableImageNodeViewRenderedProps
+  props: ResizableImageNodeViewRenderedProps
 ) => {
-  const { updateAttributes, ...props } = nodeViewRenderedProps;
+  const { updateAttributes, node, extension, editor } = props;
 
   const [focused, setFocused] = useState(false);
   const imageRef = useClickOutside<HTMLImageElement>(() => setFocused(false));
 
-  const attrs = props.node.attrs;
-  const options = props.extension.options;
-  const disabled = !props.editor.isEditable;
+  const attrs = node.attrs;
+  const options = extension.options;
+  const disabled = !editor.isEditable;
 
   const { width, height } = attrs;
   const keepRatio = attrs['data-keep-ratio'];
@@ -54,9 +54,10 @@ const ResizableImageComponent = (
         onClick={() => setFocused(true)}
         onDrag={() => setFocused(true)}
         onContextMenu={(event) => {
+          setFocused(true);
           options.onContextMenu?.(event, {
             setFocused,
-            ...nodeViewRenderedProps,
+            ...props,
           });
         }}
       />

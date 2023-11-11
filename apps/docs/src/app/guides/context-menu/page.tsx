@@ -12,13 +12,14 @@ const Page = async () => {
     <Stack>
       <Title>Context menu</Title>
       <Text>
-        This example use{' '}
+        This example uses{' '}
         <Anchor
-          href='https://icflorescu.github.io/mantine-contextmenu/'
+          href='https://www.npmjs.com/package/mantine-contextmenu'
           target='_blank'
         >
           mantine-contextmenu
-        </Anchor>
+        </Anchor>{', '}
+        you can also implement your own context menu component.
       </Text>
       <ContextMenuExample />
       <CodeHighlightTabs
