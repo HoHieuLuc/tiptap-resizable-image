@@ -6,7 +6,7 @@ import '@mantine/spotlight/styles.layer.css';
 import '@mantine/tiptap/styles.layer.css';
 import 'mantine-contextmenu/styles.layer.css';
 import './layout.css';
-import 'tiptap-resizable-image/styles.css';
+import '@hhl/tiptap-resizable-image/styles.css';
 import '@/styles/editor.css';
 
 import { createTheme } from '@mantine/core';

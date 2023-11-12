@@ -2,7 +2,7 @@
 
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { ResizableImage } from 'tiptap-resizable-image';
+import { ResizableImage } from '@hhl/tiptap-resizable-image';
 import { Link, RichTextEditor } from '@mantine/tiptap';
 import TextAlign from '@tiptap/extension-text-align';
 import classes from './MantineTiptapExample.module.css';

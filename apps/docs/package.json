@@ -26,7 +26,7 @@
     "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tiptap-resizable-image": "workspace:*"
+    "@hhl/tiptap-resizable-image": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

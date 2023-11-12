@@ -1,5 +1,5 @@
 {
-  "name": "tiptap-resizable-image",
+  "name": "@hhl/tiptap-resizable-image",
   "description": "Resizable image extension for Tiptap",
   "version": "0.1.0",
   "license": "MIT",

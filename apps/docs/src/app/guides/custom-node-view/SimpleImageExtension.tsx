@@ -3,7 +3,7 @@ import { NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react';
 import {
   ResizableImage,
   ResizableImageNodeViewRendererProps,
-} from 'tiptap-resizable-image';
+} from '@hhl/tiptap-resizable-image';
 
 const NodeView = (props: ResizableImageNodeViewRendererProps) => {
   const attrs = props.node.attrs;

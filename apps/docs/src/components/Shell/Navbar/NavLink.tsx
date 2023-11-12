@@ -26,6 +26,7 @@ const NavLink = ({ href, label, icon, iconProps, subLinks }: Route) => {
         component={Link}
         href={href}
         active={href === pathname}
+        target={href.startsWith('/') ? undefined : '_blank'}
       />
     );
   }

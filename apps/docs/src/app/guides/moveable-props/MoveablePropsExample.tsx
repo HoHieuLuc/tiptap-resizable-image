@@ -2,7 +2,7 @@
 
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { ResizableImage } from 'tiptap-resizable-image';
+import { ResizableImage } from '@hhl/tiptap-resizable-image';
 
 const MoveablePropsExample = () => {
   const editor = useEditor({

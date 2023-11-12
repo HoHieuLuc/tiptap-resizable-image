@@ -49,7 +49,7 @@ const Page = async () => {
         Don&lsquo;t forget to import the CSS file to your application:
       </Text>
       <CodeHighlight
-        code={`import 'tiptap-resizable-image/styles.css';`}
+        code={`import '@hhl/tiptap-resizable-image/styles.css';`}
         language='tsx'
       />
       <Title order={2}>Basic usage:</Title>

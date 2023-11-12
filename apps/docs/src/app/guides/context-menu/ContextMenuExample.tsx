@@ -2,7 +2,7 @@
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useContextMenu } from 'mantine-contextmenu';
-import { ResizableImage } from 'tiptap-resizable-image';
+import { ResizableImage } from '@hhl/tiptap-resizable-image';
 
 const ContextMenuExample = () => {
   const { showContextMenu } = useContextMenu();
