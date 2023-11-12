@@ -38,9 +38,10 @@ const Header = ({ navbarOpened, onNavbarToggle }: Props) => {
           onClick={onNavbarToggle}
           hiddenFrom='sm'
           size='sm'
+          aria-label='Toggle navigation'
         />
         <Link href='/' className={classes['brand-link']}>
-          <ThemeIcon color='gray' visibleFrom='sm'>
+          <ThemeIcon visibleFrom='sm'>
             <IconResize />
           </ThemeIcon>
           <Text className={classes['brand-title']}>Tiptap Resizable Image</Text>
@@ -55,6 +56,7 @@ const Header = ({ navbarOpened, onNavbarToggle }: Props) => {
             variant='default'
             size='lg'
             className={classes['link-action-icon']}
+            aria-label='npm'
           >
             <IconBrandNpm />
           </ActionIcon>
@@ -67,6 +69,7 @@ const Header = ({ navbarOpened, onNavbarToggle }: Props) => {
             variant='default'
             size='lg'
             className={classes['link-action-icon']}
+            aria-label='Source code'
           >
             <IconBrandGithub />
           </ActionIcon>
@@ -78,6 +81,7 @@ const Header = ({ navbarOpened, onNavbarToggle }: Props) => {
             onClick={() =>
               setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark')
             }
+            aria-label='Toggle color scheme'
           >
             <IconSun className={classes['icon-sun']} />
             <IconMoon className={classes['icon-moon']} />

@@ -21,7 +21,7 @@ const Page = async () => {
           mantine-contextmenu
         </Anchor>
         {', '}
-        you can also implement your own context menu component.
+        but you can also implement your own context menu component.
       </Text>
       <CodeHighlightTabs
         code={[{ fileName: 'Demo.tsx', code, language: 'tsx' }]}

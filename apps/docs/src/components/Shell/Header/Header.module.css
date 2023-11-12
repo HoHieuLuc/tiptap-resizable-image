@@ -40,7 +40,7 @@
 .brand-title {
   font-weight: bold;
   font-size: var(--mantine-font-size-xl);
-  color: white;
+  color: light-dark(var(--mantine-color-dark-5), white);
 
   @media (max-width: 350px) {
     display: none;

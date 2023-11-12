@@ -7,10 +7,12 @@
   border: 1px solid black;
   border-radius: 3px;
   padding: 10px;
+  /* prevent the image from overflowing during resizing */
   overflow: auto;
-  &:focus-within {
-    outline: none;
-  }
+}
+
+.editor > div:focus-within {
+  outline: none;
 }
 
 .editor p {

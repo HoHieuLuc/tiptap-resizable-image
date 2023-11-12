@@ -22,9 +22,7 @@ const Page = async () => {
 
   const popoverExtensionCode = await readFile({
     path: '/app/guides/custom-node-view/ImageExtensionWithPopover.tsx',
-    replaces: [
-      ['ImageExtensionWithPopover', 'DemoExtension'],
-    ],
+    replaces: [['ImageExtensionWithPopover', 'DemoExtension']],
   });
   const popoverExampleCode = await readFile({
     path: '/app/guides/custom-node-view/ImageExtensionWithPopoverExample.tsx',
@@ -39,7 +37,8 @@ const Page = async () => {
       <Title>Custom node view</Title>
       <Title order={2}>Simple node view</Title>
       <Text>
-        You can extends the extension and implement your own node view as follows:
+        You can extends the extension and implement your own node view as
+        follows:
       </Text>
       <CodeHighlightTabs
         code={[
@@ -54,12 +53,12 @@ const Page = async () => {
       <SimpleImageExtensionExample />
       <Title order={2}>With popover</Title>
       <Text>
-        You can keep using the Resizable Image component from the extension.
-        This way, you can add{' '}
+        You can continue to use the Resizable Image component from the
+        extension. By doing this, you can add a{' '}
         <Anchor href='https://mantine.dev/core/popover/' target='_blank'>
           Popover
         </Anchor>{' '}
-        to the image without re-implementing the resizable feature.
+        to the image without having to re-implement the resizable feature.
       </Text>
       <CodeHighlightTabs
         code={[

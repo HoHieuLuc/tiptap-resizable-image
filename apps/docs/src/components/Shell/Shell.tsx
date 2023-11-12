@@ -5,13 +5,19 @@ import Header from './Header/Header';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import classes from './Shell.module.css';
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 
 interface Props {
   children: React.ReactNode;
 }
 
 const Shell = ({ children }: Props) => {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, close }] = useDisclosure();
+  const pathname = usePathname();
+  useEffect(() => {
+    close();
+  }, [pathname]);
 
   return (
     <AppShell

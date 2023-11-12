@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['custom', 'next'],
+  extends: ['next', 'custom'],
   parserOptions: {
     babelOptions: {
       presets: [require.resolve('next/babel')],
