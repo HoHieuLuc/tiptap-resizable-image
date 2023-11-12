@@ -1,14 +1,17 @@
 {
-  "name": "@hhl/tiptap-resizable-image",
+  "name": "tiptap-extension-resizable-image",
   "description": "Resizable image extension for Tiptap",
   "version": "0.1.0",
   "license": "MIT",
   "author": "HoHieuLuc <luchohieu@gmail.com>",
   "homepage": "https://tiptap-resizable-image.vercel.app",
   "repository": {
-    "url": "https://github.com/HoHieuLuc/tiptap-resizable-image",
+    "url": "git+https://github.com/HoHieuLuc/tiptap-resizable-image.git",
     "type": "git",
     "directory": "packages/tiptap-resizable-image"
+  },
+  "bugs": {
+    "url": "https://github.com/HoHieuLuc/tiptap-resizable-image/issues"
   },
   "keywords": [
     "react",
@@ -20,10 +23,6 @@
     "rich text",
     "editor"
   ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

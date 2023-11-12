@@ -32,9 +32,6 @@ importers:
 
   apps/docs:
     dependencies:
-      '@hhl/tiptap-resizable-image':
-        specifier: workspace:*
-        version: link:../../packages/tiptap-resizable-image
       '@mantine/code-highlight':
         specifier: ^7.2.1
         version: 7.2.1(@mantine/core@7.2.1)(@mantine/hooks@7.2.1)(react-dom@18.2.0)(react@18.2.0)
@@ -83,6 +80,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      tiptap-extension-resizable-image:
+        specifier: workspace:*
+        version: link:../../packages/tiptap-resizable-image
     devDependencies:
       '@types/node':
         specifier: ^17.0.45

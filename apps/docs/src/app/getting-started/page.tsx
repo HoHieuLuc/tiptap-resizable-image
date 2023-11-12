@@ -28,17 +28,17 @@ const Page = async () => {
       <CodeHighlightTabs
         code={[
           {
-            code: 'npm install tiptap-resizable-image',
+            code: 'npm install tiptap-extension-resizable-image',
             fileName: 'npm',
             language: 'bash',
           },
           {
-            code: 'yarn add tiptap-resizable-image',
+            code: 'yarn add tiptap-extension-resizable-image',
             fileName: 'yarn',
             language: 'bash',
           },
           {
-            code: 'pnpm install tiptap-resizable-image',
+            code: 'pnpm install tiptap-extension-resizable-image',
             fileName: 'pnpm',
             language: 'bash',
           },
@@ -46,10 +46,10 @@ const Page = async () => {
         withExpandButton={false}
       />
       <Text>
-        Don&lsquo;t forget to import the CSS file to your application:
+        {`Don't`} forget to import the CSS file to your application:
       </Text>
       <CodeHighlight
-        code={`import '@hhl/tiptap-resizable-image/styles.css';`}
+        code={`import 'tiptap-extension-resizable-image/styles.css';`}
         language='tsx'
       />
       <Title order={2}>Basic usage:</Title>

@@ -9,7 +9,7 @@ import {
   ResizableImage,
   ResizableImageComponent,
   ResizableImageNodeViewRendererProps,
-} from '@hhl/tiptap-resizable-image';
+} from 'tiptap-extension-resizable-image';
 
 const NodeView = (props: ResizableImageNodeViewRendererProps) => {
   const editor = props.editor;
