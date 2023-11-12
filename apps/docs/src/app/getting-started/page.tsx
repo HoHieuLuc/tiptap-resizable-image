@@ -3,6 +3,12 @@ import GettingStartedExample from './GettingStartedExample';
 import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import readFile from '@/utils/read-file';
 import { CodeHighlight } from '@mantine/code-highlight';
+import { Metadata } from 'next';
+import { SITE_TITLE } from '@/config';
+
+export const metadata: Metadata = {
+  title: `Getting started | ${SITE_TITLE}`,
+};
 
 const Page = async () => {
   const componentFile = await readFile({

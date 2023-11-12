@@ -8,10 +8,15 @@ import classes from './NavLink.module.css';
 const NavLink = ({ href, label, icon, iconProps, subLinks }: NavbarLink) => {
   const pathname = usePathname();
   const opened = subLinks?.some((link) => link.href === pathname);
+  const Icon = icon;
 
   const sharedProps = {
     label,
-    leftSection: <NavLinkIcon {...iconProps}>{icon}</NavLinkIcon>,
+    leftSection: Icon && (
+      <NavLinkIcon {...iconProps}>
+        <Icon />
+      </NavLinkIcon>
+    ),
   };
 
   if (!subLinks || subLinks.length === 0) {
@@ -36,7 +41,6 @@ const NavLink = ({ href, label, icon, iconProps, subLinks }: NavbarLink) => {
       {subLinks.map((link) => (
         <MNavLink
           key={link.href}
-          leftSection={link.icon}
           label={link.label}
           component={Link}
           href={link.href}

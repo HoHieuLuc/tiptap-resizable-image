@@ -1,10 +1,10 @@
+import { ROUTES } from '@/config';
 import NavLink from './NavLink';
-import navbarLinks from './Navbar.data';
 
 const Navbar = () => {
   return (
     <div>
-      {navbarLinks.map((link) => (
+      {ROUTES.map((link) => (
         <NavLink
           key={link.label}
           {...link}

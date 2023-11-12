@@ -3,6 +3,12 @@ import SimpleImageExtensionExample from './SimpleImageExtensionExample';
 import readFile from '@/utils/read-file';
 import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import ImageExtensionWithPopoverExample from './ImageExtensionWithPopoverExample';
+import { SITE_TITLE } from '@/config';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `Custom node view | ${SITE_TITLE}`,
+};
 
 const Page = async () => {
   const simpleExtensionCode = await readFile({

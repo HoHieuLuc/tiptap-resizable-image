@@ -1,6 +1,12 @@
 import { Title, Text, Button, Container, Group } from '@mantine/core';
 import classes from './not-found.module.css';
 import Link from 'next/link';
+import { SITE_TITLE } from '@/config';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `404 | ${SITE_TITLE}`,
+};
 
 const NotFound = () => {
   return (

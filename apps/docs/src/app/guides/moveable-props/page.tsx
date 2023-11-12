@@ -2,6 +2,12 @@ import { Anchor, Code, Stack, Text, Title } from '@mantine/core';
 import MoveablePropsExample from './MoveablePropsExample';
 import readFile from '@/utils/read-file';
 import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
+import { SITE_TITLE } from '@/config';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `Moveable props | ${SITE_TITLE}`,
+};
 
 const Page = async () => {
   const code = await readFile({

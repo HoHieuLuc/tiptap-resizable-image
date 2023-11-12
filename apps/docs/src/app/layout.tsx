@@ -3,24 +3,30 @@ import Shell from '@/components/Shell/Shell';
 import { ContextMenuProvider } from 'mantine-contextmenu';
 import { theme } from './theme';
 import { Metadata } from 'next';
+import { SITE_TITLE } from '@/config';
 
 export const metadata: Metadata = {
-  title: 'Tiptap Resizable Image',
+  metadataBase: new URL('https://raw.githubusercontent.com'),
+  title: SITE_TITLE,
   description: 'A library designed to enrich your rich text editor with advanced image control, offering flexibility and customization.',
   icons: {
     shortcut: '/favicon.svg',
   },
   openGraph: {
-    title: 'Tiptap Resizable Image',
+    title: SITE_TITLE,
     description: 'A library designed to enrich your rich text editor with advanced image control, offering flexibility and customization.',
     images: [
       {
-        url: '/social-preview.png',
+        url: 'https://raw.githubusercontent.com/HoHieuLuc/tiptap-resizable-image/master/apps/docs/public/social-preview.png',
         width: 1280,
         height: 640,
       },
     ],
     type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
