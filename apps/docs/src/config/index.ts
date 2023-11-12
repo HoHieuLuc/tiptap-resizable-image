@@ -2,7 +2,7 @@ import { ThemeIconProps } from '@mantine/core';
 import { TablerIconsProps, IconHome, IconRocket, IconBrandCss3, IconArrowGuide, IconHearts, IconList } from '@tabler/icons-react';
 
 export const REPO_LINK = 'https://github.com/HoHieuLuc/tiptap-resizable-image';
-export const NPM_LINK = 'https://github.com/HoHieuLuc/tiptap-resizable-image';
+export const NPM_LINK = 'https://www.npmjs.com/package/tiptap-extension-resizable-image';
 export const LICENSE_LINK = 'https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/LICENSE';
 export const SITE_URL = process.env['NEXT_PUBLIC_SITE_URL'] || 'https://tiptap-resizable-image.vercel.app';
 export const SITE_TITLE = 'Tiptap Resizable Image';
