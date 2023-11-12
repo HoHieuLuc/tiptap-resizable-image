@@ -77,8 +77,7 @@ export const ROUTES: Array<Route> = [
   },
   {
     label: 'Changelog',
-    // TODO: add changelog
-    href: '/changelog',
+    href: 'https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/packages/tiptap-resizable-image/CHANGELOG.md',
     icon: IconList,
     iconProps: {
       color: 'gray.7',
