@@ -1,11 +1,11 @@
 import { NavLink as MNavLink } from '@mantine/core';
-import { NavbarLink } from './Navbar.data';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavLinkIcon from './NavLinkIcon';
 import classes from './NavLink.module.css';
+import { Route } from '@/config';
 
-const NavLink = ({ href, label, icon, iconProps, subLinks }: NavbarLink) => {
+const NavLink = ({ href, label, icon, iconProps, subLinks }: Route) => {
   const pathname = usePathname();
   const opened = subLinks?.some((link) => link.href === pathname);
   const Icon = icon;

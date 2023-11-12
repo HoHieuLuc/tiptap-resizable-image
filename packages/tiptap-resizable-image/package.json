@@ -20,7 +20,8 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --minify --treeshake --external react",
-    "dev": "npm run build -- --watch"
+    "dev": "npm run build -- --watch",
+    "lint": "eslint ./src"
   },
   "devDependencies": {
     "@tiptap/core": "^2.1.12",
