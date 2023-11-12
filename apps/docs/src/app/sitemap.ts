@@ -17,7 +17,7 @@ function flattenRoutes(routes: Array<Route>): Array<string> {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = flattenRoutes(ROUTES)
-    .filter((route) => route !== '/' || !route.startsWith('/'));
+    .filter((route) => route !== '/' && route.startsWith('/'));
 
   return [
     {

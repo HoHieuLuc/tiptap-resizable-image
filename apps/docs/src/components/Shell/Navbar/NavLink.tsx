@@ -34,10 +34,11 @@ const NavLink = ({ href, label, icon, iconProps, subLinks }: Route) => {
   return (
     <MNavLink
       {...sharedProps}
+      defaultOpened={opened}
+      component='div'
       classNames={{
         children: classes.children,
       }}
-      defaultOpened={opened}
     >
       {subLinks.map((link) => (
         <MNavLink

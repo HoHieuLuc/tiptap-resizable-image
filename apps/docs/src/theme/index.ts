@@ -5,12 +5,21 @@ import '@mantine/code-highlight/styles.layer.css';
 import '@mantine/spotlight/styles.layer.css';
 import '@mantine/tiptap/styles.layer.css';
 import 'mantine-contextmenu/styles.layer.css';
-import './layout.css';
 import 'tiptap-extension-resizable-image/styles.css';
+import '@/app/layout.css';
 import '@/styles/editor.css';
 
-import { createTheme } from '@mantine/core';
+import { NavLink, createTheme } from '@mantine/core';
+import navLinkClasses from './NavLink.module.css';
 
 export const theme = createTheme({
-  /* Put your mantine theme override here */
+  components: {
+    NavLink: NavLink.extend({
+      defaultProps: {
+        classNames: {
+          label: navLinkClasses.label,
+        }
+      }
+    })
+  }
 });
