@@ -17,12 +17,7 @@ const Page = () => {
         writing code, your contributions are greatly appreciated.
       </Text>
 
-      <Title order={2}>Getting Started Locally</Title>
-      <Text>
-        To get started with contributing to Tiptap Resizable Image, follow these
-        steps to set up the project locally on your machine.
-      </Text>
-
+      <Title order={2}>Get started locally</Title>
       <Text>
         <Code>1. Install PNPM:</Code> This project uses PNPM for package
         management. To install PNPM, run the following command in your terminal:{' '}
