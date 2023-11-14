@@ -30,7 +30,7 @@ const Home = () => {
         <Jumbotron
           icon={<IconScale />}
           title='Free and open source'
-          description='This package is released under the MIT license, you can use titap-resizable-image in any project'
+          description='This package is released under the MIT license, you can use titap-extension-resizable-image in any project'
         />
         <Jumbotron
           icon={<IconLifebuoy />}
