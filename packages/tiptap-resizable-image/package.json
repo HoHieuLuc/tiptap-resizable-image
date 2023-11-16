@@ -21,7 +21,9 @@
     "resizable",
     "image",
     "rich text",
-    "editor"
+    "editor",
+    "tiptap extension",
+    "resize"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

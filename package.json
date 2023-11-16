@@ -8,7 +8,8 @@
     "test": "turbo run lint typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build test && changeset version && changeset publish",
-    "syncpack": "syncpack list-mismatches"
+    "syncpack": "syncpack list-mismatches",
+    "sync-readme": "sh scripts/sync-readme.sh"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

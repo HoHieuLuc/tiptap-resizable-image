@@ -54,5 +54,19 @@ const Demo = () => {
 export default Demo;
 ```
 
+## Commands
+### setResizableImage
+```tsx
+editor.commands.setResizableImage({
+  src: '',
+  alt: '',
+  title: '',
+  width: 200,
+  height: 200,
+  className: '',
+  'data-keep-ratio': true,
+});
+```
+
 ## License
 The [MIT License](https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/LICENSE).

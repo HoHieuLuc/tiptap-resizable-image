@@ -1,4 +1,8 @@
 # `tiptap-extension-resizable-image`
+![Pull request workflows](https://github.com/HoHieuLuc/tiptap-resizable-image/actions/workflows/pull_request.yml/badge.svg)
+[![NPM](https://img.shields.io/npm/l/tiptap-extension-resizable-image)](https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/tiptap-extension-resizable-image)](https://www.npmjs.com/package/tiptap-extension-resizable-image)
+[![GitHub Repo stars](https://img.shields.io/github/stars/HoHieuLuc/tiptap-resizable-image)](https://github.com/HoHieuLuc/tiptap-resizable-image/stargazers)
 
 ## Links
 
@@ -48,6 +52,20 @@ const Demo = () => {
 };
 
 export default Demo;
+```
+
+## Commands
+### setResizableImage
+```tsx
+editor.commands.setResizableImage({
+  src: '',
+  alt: '',
+  title: '',
+  width: 200,
+  height: 200,
+  className: '',
+  'data-keep-ratio': true,
+});
 ```
 
 ## License
