@@ -1,5 +1,11 @@
 # tiptap-resizable-image
 
+## 0.1.2
+
+### Patch Changes
+
+- Add commands section to README
+
 ## 0.1.1
 
 ### Patch Changes
