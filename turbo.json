@@ -3,6 +3,9 @@
   "globalDependencies": [
     "**/.env.*local"
   ],
+  "globalEnv": [
+    "NEXT_PUBLIC_SITE_URL"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": [
