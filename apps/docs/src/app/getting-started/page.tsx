@@ -1,8 +1,8 @@
-import { Stack, Text, Title } from '@mantine/core';
+import { Stack, Text } from '@mantine/core';
 import GettingStartedExample from './GettingStartedExample';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import readFile from '@/utils/read-file';
 import { CodeHighlight } from '@mantine/code-highlight';
+import { CodeHighlightTabs, Heading } from '@/components';
 import { Metadata } from 'next';
 import { SITE_TITLE } from '@/config';
 
@@ -23,7 +23,10 @@ const commandsCode = `editor.commands.setResizableImage({
 const Page = async () => {
   const componentCode = await readFile({
     path: '/app/getting-started/GettingStartedExample.tsx',
-    replaces: [['GettingStartedExample', 'Demo'], ['@/styles/editor', './Demo']],
+    replaces: [
+      ['GettingStartedExample', 'Demo'],
+      ['@/styles/editor', './Demo'],
+    ],
   });
   const cssCode = await readFile({
     path: '/styles/editor.css',
@@ -31,8 +34,8 @@ const Page = async () => {
 
   return (
     <Stack>
-      <Title>Getting started</Title>
-      <Title order={2}>Installation</Title>
+      <Heading label='Getting started' />
+      <Heading order={2} label='Installation' />
       <CodeHighlightTabs
         code={[
           {
@@ -58,7 +61,7 @@ const Page = async () => {
         code={`import 'tiptap-extension-resizable-image/styles.css';`}
         language='tsx'
       />
-      <Title order={2}>Basic usage</Title>
+      <Heading order={2} label='Basic usage' />
       <CodeHighlightTabs
         code={[
           { fileName: 'Demo.tsx', code: componentCode, language: 'tsx' },
@@ -66,8 +69,8 @@ const Page = async () => {
         ]}
       />
       <GettingStartedExample />
-      <Title order={2}>Commands</Title>
-      <Title order={3}>setResizableImage</Title>
+      <Heading order={2} label='Commands' />
+      <Heading order={3} label='setResizableImage' />
       <CodeHighlight code={commandsCode} language='tsx' />
     </Stack>
   );

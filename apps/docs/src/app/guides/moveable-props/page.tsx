@@ -1,7 +1,7 @@
-import { Anchor, Code, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Code, Stack, Text } from '@mantine/core';
+import { CodeHighlightTabs, Heading } from '@/components';
 import MoveablePropsExample from './MoveablePropsExample';
 import readFile from '@/utils/read-file';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import { SITE_TITLE } from '@/config';
 import { Metadata } from 'next';
 
@@ -17,16 +17,19 @@ const Page = async () => {
 
   return (
     <Stack>
-      <Title>Override Moveable props</Title>
+      <Heading label='Override Moveable props' />
       <Text>
         This extension uses{' '}
         <Anchor href='https://www.npmjs.com/package/moveable' target='_blank'>
           moveable
         </Anchor>{' '}
-        under the hood to manage resizing. The default properties can be overridden by
-        passing <Code>moveableProps</Code> object to the extension options.
+        under the hood to manage resizing. The default properties can be
+        overridden by passing <Code>moveableProps</Code> object to the extension
+        options.
       </Text>
-      <CodeHighlightTabs code={{ fileName: 'Demo.tsx', code, language: 'tsx' }} />
+      <CodeHighlightTabs
+        code={{ fileName: 'Demo.tsx', code, language: 'tsx' }}
+      />
       <MoveablePropsExample />
     </Stack>
   );

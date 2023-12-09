@@ -1,0 +1,3 @@
+:target {
+  scroll-margin-top: var(--app-shell-header-height);
+}

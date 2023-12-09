@@ -1,4 +1,5 @@
-import {  Stack, Title } from '@mantine/core';
+import { Stack } from '@mantine/core';
+import { Heading } from '@/components';
 import ResizeHandlerStyle from './ResizeHandlerStyle';
 import GhostStyle from './GhostStyle';
 import { SITE_TITLE } from '@/config';
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <Stack>
-      <Title>Styling</Title>
+      <Heading label='Styling' />
       <ResizeHandlerStyle />
       <GhostStyle />
     </Stack>

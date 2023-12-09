@@ -1,7 +1,7 @@
-import { Anchor, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Stack, Text } from '@mantine/core';
+import { CodeHighlightTabs, Heading } from '@/components';
 import ContextMenuExample from './ContextMenuExample';
 import readFile from '@/utils/read-file';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import { SITE_TITLE } from '@/config';
 import { Metadata } from 'next';
 
@@ -17,7 +17,7 @@ const Page = async () => {
 
   return (
     <Stack>
-      <Title>Context menu</Title>
+      <Heading label='Context menu' />
       <Text>
         This example uses{' '}
         <Anchor

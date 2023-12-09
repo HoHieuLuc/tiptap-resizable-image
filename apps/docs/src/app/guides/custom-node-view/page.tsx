@@ -1,8 +1,8 @@
-import { Anchor, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Stack, Text } from '@mantine/core';
+import { CodeHighlightTabs, Heading } from '@/components';
 import SimpleImageExtensionExample from './SimpleImageExtensionExample';
-import readFile from '@/utils/read-file';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import ImageExtensionWithPopoverExample from './ImageExtensionWithPopoverExample';
+import readFile from '@/utils/read-file';
 import { SITE_TITLE } from '@/config';
 import { Metadata } from 'next';
 
@@ -40,8 +40,8 @@ const Page = async () => {
 
   return (
     <Stack>
-      <Title>Custom node view</Title>
-      <Title order={2}>Simple node view</Title>
+      <Heading label='Custom node view' />
+      <Heading order={2} label='Simple node view' />
       <Text>
         You can extends the extension and implement your own node view as
         follows:
@@ -57,7 +57,7 @@ const Page = async () => {
         ]}
       />
       <SimpleImageExtensionExample />
-      <Title order={2}>With popover</Title>
+      <Heading order={2} label='With popover' />
       <Text>
         You can continue to use the Resizable Image component from the
         extension. By doing this, you can add a{' '}

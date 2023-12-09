@@ -1,7 +1,7 @@
-import { Anchor, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Stack, Text } from '@mantine/core';
+import { CodeHighlightTabs, Heading } from '@/components';
 import MantineTiptapExample from './MantineTiptapExample';
 import readFile from '@/utils/read-file';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import { SITE_TITLE } from '@/config';
 import { Metadata } from 'next';
 
@@ -20,7 +20,7 @@ const Page = async () => {
 
   return (
     <Stack>
-      <Title>Usage with Mantine Tiptap</Title>
+      <Heading label='Usage with Mantine Tiptap' />
       <Text>
         This extension works with{' '}
         <Anchor href='https://mantine.dev/others/tiptap/' target='_blank'>

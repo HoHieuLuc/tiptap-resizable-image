@@ -8,6 +8,7 @@ import 'mantine-contextmenu/styles.layer.css';
 import 'tiptap-extension-resizable-image/styles.css';
 import '@/app/layout.css';
 import '@/styles/editor.css';
+import '@/styles/global.css';
 
 import { NavLink, createTheme } from '@mantine/core';
 import navLinkClasses from './NavLink.module.css';
@@ -15,11 +16,9 @@ import navLinkClasses from './NavLink.module.css';
 export const theme = createTheme({
   components: {
     NavLink: NavLink.extend({
-      defaultProps: {
-        classNames: {
-          label: navLinkClasses.label,
-        }
-      }
-    })
-  }
+      classNames: {
+        label: navLinkClasses.label,
+      },
+    }),
+  },
 });

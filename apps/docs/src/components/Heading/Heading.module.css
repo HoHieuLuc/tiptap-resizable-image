@@ -1,0 +1,24 @@
+.anchor {
+  position: relative;
+  color: unset;
+
+  &:hover {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &::before {
+        content: '#';
+        position: absolute;
+        left: -1em;
+      }
+      @mixin smaller-than 1328px {
+        &::before {
+          content: '';
+        }
+      }
+    }
+  }
+}

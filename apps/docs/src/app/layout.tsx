@@ -1,6 +1,6 @@
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import Shell from '@/components/Shell/Shell';
 import { ContextMenuProvider } from 'mantine-contextmenu';
+import { Shell } from '@/components';
 import { theme } from '../theme';
 import { Metadata } from 'next';
 import { SITE_TITLE } from '@/config';

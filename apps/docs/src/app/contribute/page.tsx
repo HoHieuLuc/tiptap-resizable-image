@@ -1,5 +1,6 @@
+import { Heading } from '@/components';
 import { SITE_TITLE } from '@/config';
-import { Code, Stack, Text, Title } from '@mantine/core';
+import { Code, Stack, Text } from '@mantine/core';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <Stack>
-      <Title order={1}>Contribute to Tiptap Resizable Image</Title>
+      <Heading order={1} label='Contribute to Tiptap Resizable Image' />
       <Text>
         We welcome all contributions to Tiptap Resizable Image! Whether{' '}
         {`you're`}
@@ -17,7 +18,7 @@ const Page = () => {
         writing code, your contributions are greatly appreciated.
       </Text>
 
-      <Title order={2}>Get started locally</Title>
+      <Heading order={2} label='Get started locally' />
       <Text>
         <Code>1. Install PNPM:</Code> This project uses PNPM for package
         management. To install PNPM, run the following command in your terminal:{' '}
@@ -56,14 +57,14 @@ const Page = () => {
         and feel free to ask for help if you need it.
       </Text>
 
-      <Title order={2}>Reporting Bugs</Title>
+      <Heading order={2} label='Reporting Bugs' />
       <Text>
         If you find a bug, please open an issue on the GitHub repository.
         Include as many details as you can, such as the steps to reproduce the
         bug and any error messages.
       </Text>
 
-      <Title order={2}>Suggesting Features</Title>
+      <Heading order={2} label='Suggesting Features' />
       <Text>
         {`We're`} always open to new ideas to improve Tiptap Resizable Image. If
         you have a suggestion, please open an issue and label it as a feature

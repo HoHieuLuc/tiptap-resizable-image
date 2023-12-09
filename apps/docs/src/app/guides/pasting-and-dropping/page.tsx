@@ -1,6 +1,6 @@
-import { Stack, Text, Title } from '@mantine/core';
+import { Stack, Text } from '@mantine/core';
+import { CodeHighlightTabs, Heading } from '@/components';
 import PastingAndDroppingExample from './PastingAndDroppingExample';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import readFile from '@/utils/read-file';
 import { SITE_TITLE } from '@/config';
 import { Metadata } from 'next';
@@ -17,7 +17,7 @@ const Page = async () => {
 
   return (
     <Stack>
-      <Title>Pasting and dropping</Title>
+      <Heading label='Pasting and dropping' />
       <Text>
         When pasting or dropping an image from the file system, an upload
         handler can be added as follows:

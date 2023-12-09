@@ -1,6 +1,6 @@
-import { Stack, Title } from '@mantine/core';
+import { Stack } from '@mantine/core';
+import { CodeHighlightTabs, Heading } from '@/components';
 import GettingStartedExample from '../getting-started/GettingStartedExample';
-import CodeHighlightTabs from '@/components/CodeHighlightTabs/CodeHighlightTabs';
 import classes from './ResizeHandlerStyle.module.css';
 
 const css = `.moveable-control.moveable-direction {
@@ -15,7 +15,7 @@ const css = `.moveable-control.moveable-direction {
 const ResizeHandlerStyle = async () => {
   return (
     <Stack className={classes.root}>
-      <Title order={2}>Change handler style</Title>
+      <Heading order={2} label='Change handler style' />
       <CodeHighlightTabs code={{ fileName: 'Demo.css', code: css, language: 'css' }} />
       <GettingStartedExample />
     </Stack>
