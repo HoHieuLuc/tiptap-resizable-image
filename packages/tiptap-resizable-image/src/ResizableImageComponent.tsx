@@ -1,5 +1,11 @@
 import { CSSProperties, DataHTMLAttributes, useState } from 'react';
-import { makeMoveable, Scalable, ScalableProps } from 'react-moveable';
+import {
+  makeMoveable,
+  OnScale,
+  OnScaleEnd,
+  Scalable,
+  ScalableProps,
+} from 'react-moveable';
 import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
 import { useClickOutside } from './use-click-outside';
 
@@ -37,14 +43,36 @@ const ResizableImageComponent = (
     ...attrs,
     style: {
       ...(style || {}),
-      maxWidth: width || options.maxWidth,
+      maxWidth: width,
     },
   };
 
+  const onScale = (event: OnScale) => {
+    event.target.style.transform = event.drag.transform;
+  };
+
+  const onScaleEnd = (event: OnScaleEnd) => {
+    const rect = event.target.getBoundingClientRect();
+    if (rect.width <= options.maxWidth) {
+      updateAttributes({
+        width: rect.width,
+        height: rect.height,
+      });
+    } else {
+      const _height = keepRatio
+        ? options.maxWidth * (rect.height / rect.width)
+        : rect.height;
+      updateAttributes({
+        width: options.maxWidth,
+        height: _height,
+      });
+    }
+    event.target.style.transform = '';
+    setFocused(false);
+  };
+
   if (disabled) {
-    return (
-      <img {...sharedImageProps} />
-    );
+    return <img {...sharedImageProps} />;
   }
 
   return (
@@ -63,11 +91,8 @@ const ResizableImageComponent = (
         }}
       />
       {focused && (
-        <div className='ghost' style={{ position: 'absolute', top: 0 }}>
-          <img
-            {...sharedImageProps}
-            style={{ opacity: 0.3, ...sharedImageProps.style }}
-          />
+        <div className='ghost'>
+          <img {...sharedImageProps} />
         </div>
       )}
       <Moveable
@@ -78,19 +103,8 @@ const ResizableImageComponent = (
         throttleScale={0}
         renderDirections={['se', 'nw', 'ne', 'sw']}
         snappable={true}
-        onScale={(e) => {
-          e.target.style.transform = e.drag.transform;
-        }}
-        onScaleEnd={(e) => {
-          const rect = e.target?.getBoundingClientRect();
-          updateAttributes({
-            width: rect?.width,
-            height: rect?.height,
-          });
-          e.target.style.transform = '';
-
-          setFocused(false);
-        }}
+        onScale={onScale}
+        onScaleEnd={onScaleEnd}
         {...options.moveableProps}
       />
     </>

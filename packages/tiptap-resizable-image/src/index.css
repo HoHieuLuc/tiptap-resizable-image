@@ -16,12 +16,12 @@
   object-fit: contain;
 }
 
-.image-component > .ghost {
+.image-component .ghost {
   position: absolute;
   top: 0;
 }
 
-.image-component > .ghost > img {
+.image-component .ghost > img {
   opacity: 0.3;
 }
 
