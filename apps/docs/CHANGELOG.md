@@ -1,5 +1,12 @@
 # docs
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies
+  - tiptap-extension-resizable-image@0.2.0
+
 ## 1.0.3
 
 ### Patch Changes

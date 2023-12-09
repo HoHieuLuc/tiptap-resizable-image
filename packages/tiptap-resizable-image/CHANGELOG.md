@@ -1,5 +1,11 @@
 # tiptap-resizable-image
 
+## 0.2.0
+
+### Minor Changes
+
+- Fix maxWidth not working correctly
+
 ## 0.1.2
 
 ### Patch Changes
