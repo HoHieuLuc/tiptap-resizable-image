@@ -8,6 +8,8 @@ import { ScalableProps } from 'react-moveable';
 export interface ResizableImageOptions {
   /** HTML attributes for the resizable image. */
   HTMLAttributes: Record<string, unknown>;
+  /** Allow base 64 as src. */
+  allowBase64: boolean;
   /** Default width of the image element. */
   defaultWidth: number;
   /** Default height of the image element. */

@@ -21,6 +21,7 @@ export default Node.create<ResizableImageOptions>({
       defaultHeight: 500,
       defaultWidth: 500,
       maxWidth: 16384,
+      allowBase64: true,
     };
   },
 
@@ -56,7 +57,7 @@ export default Node.create<ResizableImageOptions>({
             'data-keep-ratio': 'true',
           };
         },
-        default: false,
+        default: true,
       },
       className: {
         parseHTML: (element: HTMLElement) => {
@@ -75,7 +76,9 @@ export default Node.create<ResizableImageOptions>({
   parseHTML() {
     return [
       {
-        tag: 'img',
+        tag: this.options.allowBase64
+          ? 'img[src]'
+          : 'img[src]:not([src^="data:"])',
       },
     ];
   },

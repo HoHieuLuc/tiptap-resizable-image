@@ -28,7 +28,6 @@
 p:has(span.node-imageComponent) {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
 }
 
 /* these styles are required for aligning the image */
