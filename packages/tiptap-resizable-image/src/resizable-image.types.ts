@@ -1,4 +1,5 @@
 import { Attribute, Range } from '@tiptap/core';
+import { ParseOptions } from '@tiptap/pm/model';
 import { NodeViewRendererProps } from '@tiptap/react';
 import { ScalableProps } from 'react-moveable';
 
@@ -70,10 +71,15 @@ export interface ResizableImageNodeViewRendererProps extends NodeViewRendererPro
   extension: Extension;
 }
 
+interface InsertContentAtOptions {
+  parseOptions?: ParseOptions;
+  updateSelection?: boolean;
+}
+
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     imageComponent: {
-      setResizableImage(attrs: ResizableImageHTMLAttributes, position?: number | Range): ReturnType;
+      setResizableImage(attrs: ResizableImageHTMLAttributes, position?: number | Range, options?: InsertContentAtOptions): ReturnType;
     }
   }
 }

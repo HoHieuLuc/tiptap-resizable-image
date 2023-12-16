@@ -1,4 +1,4 @@
-import { mergeAttributes, Node } from '@tiptap/core';
+import { mergeAttributes, Node, nodeInputRule } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 import {
   ResizableImageAttributes,
@@ -7,6 +7,8 @@ import {
 } from './resizable-image.types';
 import ResizableImageNodeView from './ResizableImageNodeView';
 import { Plugin, PluginKey } from '@tiptap/pm/state';
+
+const inputRegex = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
 
 export default Node.create<ResizableImageOptions>({
   name: 'imageComponent',
@@ -102,21 +104,31 @@ export default Node.create<ResizableImageOptions>({
   addCommands() {
     return {
       setResizableImage:
-        (options, position) => ({ commands }) => {
+        (attrs, position, options) => ({ commands }) => {
           return commands.insertContentAt(
             position || this.editor.state.selection.head,
             {
               type: this.name,
-              attrs: {
-                ...options,
-              },
+              attrs,
             },
-            {
-              updateSelection: false,
-            }
+            options
           );
         },
     };
+  },
+
+  addInputRules() {
+    return [
+      nodeInputRule({
+        find: inputRegex,
+        type: this.type,
+        getAttributes: match => {
+          const [, , alt, src, title] = match;
+
+          return { src, alt, title };
+        },
+      }),
+    ];
   },
 
   addProseMirrorPlugins() {
@@ -148,7 +160,7 @@ export default Node.create<ResizableImageOptions>({
                 this.editor
                   .chain()
                   .focus()
-                  .setResizableImage(attrs, position)
+                  .setResizableImage(attrs, position, { updateSelection: false })
                   .run();
               });
             }
@@ -171,7 +183,7 @@ export default Node.create<ResizableImageOptions>({
                 this.editor
                   .chain()
                   .focus()
-                  .setResizableImage(attrs, position)
+                  .setResizableImage(attrs, position, { updateSelection: false })
                   .run();
               });
             }

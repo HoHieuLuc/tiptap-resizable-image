@@ -16,6 +16,10 @@
   object-fit: contain;
 }
 
+.image-component img[data-keep-ratio='false'] {
+  object-fit: fill;
+}
+
 .image-component .ghost {
   position: absolute;
   top: 0;

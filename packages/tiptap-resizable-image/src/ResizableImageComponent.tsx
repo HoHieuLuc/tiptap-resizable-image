@@ -35,11 +35,9 @@ const ResizableImageComponent = (
   const style: CSSProperties | false = !keepRatio && {
     width,
     height,
-    objectFit: 'fill',
   };
 
   const sharedImageProps: ImageProps = {
-    ...options.HTMLAttributes,
     ...attrs,
     style: {
       ...(style || {}),
