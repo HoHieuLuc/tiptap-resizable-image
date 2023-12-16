@@ -1,5 +1,12 @@
 # tiptap-resizable-image
 
+## 0.3.0
+
+### Minor Changes
+
+- Add allowBase64 option
+- Add markdown syntax support
+
 ## 0.2.0
 
 ### Minor Changes
