@@ -1,15 +1,17 @@
 import { ROUTES } from '@/config';
 import NavLink from './NavLink';
 
+const navLinkElements = ROUTES.map((link) => (
+  <NavLink
+    key={link.label}
+    {...link}
+  />
+));
+
 const Navbar = () => {
   return (
     <div>
-      {ROUTES.map((link) => (
-        <NavLink
-          key={link.label}
-          {...link}
-        />
-      ))}
+      {navLinkElements}
     </div>
   );
 };

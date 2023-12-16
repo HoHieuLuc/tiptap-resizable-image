@@ -1,14 +1,15 @@
 .editor {
-  min-height: 300px;
-}
-
-.editor > div {
+  display: flex;
   min-height: 300px;
   border: 1px solid black;
   border-radius: 3px;
-  padding: 10px;
   /* prevent the image from overflowing during resizing */
   overflow: auto;
+}
+
+.editor > div {
+  padding: 10px;
+  flex-grow: 1;
 }
 
 .editor > div:focus-within {

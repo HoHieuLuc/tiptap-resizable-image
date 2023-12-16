@@ -31,6 +31,16 @@ const NavLink = ({ href, label, icon, iconProps, subLinks }: Route) => {
     );
   }
 
+  const subLinkElements = subLinks.map((link) => (
+    <MNavLink
+      key={link.href}
+      label={link.label}
+      component={Link}
+      href={link.href}
+      active={link.href === pathname}
+    />
+  ));
+
   return (
     <MNavLink
       {...sharedProps}
@@ -40,15 +50,7 @@ const NavLink = ({ href, label, icon, iconProps, subLinks }: Route) => {
         children: classes.children,
       }}
     >
-      {subLinks.map((link) => (
-        <MNavLink
-          key={link.href}
-          label={link.label}
-          component={Link}
-          href={link.href}
-          active={link.href === pathname}
-        />
-      ))}
+      {subLinkElements}
     </MNavLink>
   );
 };
