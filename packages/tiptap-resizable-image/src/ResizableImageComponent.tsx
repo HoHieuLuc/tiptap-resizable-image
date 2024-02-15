@@ -1,4 +1,4 @@
-import { CSSProperties, DataHTMLAttributes, useState } from 'react';
+import { CSSProperties, DataHTMLAttributes, useRef } from 'react';
 import {
   makeMoveable,
   OnScale,
@@ -7,7 +7,6 @@ import {
   ScalableProps,
 } from 'react-moveable';
 import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
-import { useClickOutside } from './use-click-outside';
 
 type ImageProps = React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
@@ -22,8 +21,7 @@ const ResizableImageComponent = (
 ) => {
   const { updateAttributes, node, extension, editor } = props;
 
-  const [focused, setFocused] = useState(false);
-  const imageRef = useClickOutside<HTMLImageElement>(() => setFocused(false));
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const attrs = node.attrs;
   const options = extension.options;
@@ -66,7 +64,12 @@ const ResizableImageComponent = (
       });
     }
     event.target.style.transform = '';
-    setFocused(false);
+  };
+
+  const onContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    options.onContextMenu?.(event, props);
   };
 
   if (disabled) {
@@ -75,32 +78,19 @@ const ResizableImageComponent = (
 
   return (
     <>
-      <img
-        {...sharedImageProps}
-        ref={imageRef}
-        onClick={() => setFocused(true)}
-        onDrag={() => setFocused(true)}
-        onContextMenu={(event) => {
-          setFocused(true);
-          options.onContextMenu?.(event, {
-            setFocused,
-            ...props,
-          });
-        }}
-      />
-      {focused && (
-        <div className='ghost'>
-          <img {...sharedImageProps} />
-        </div>
-      )}
+      <img {...sharedImageProps} ref={imageRef} onContextMenu={onContextMenu} />
+      <div className='ghost'>
+        <img {...sharedImageProps} />
+      </div>
       <Moveable
-        target={focused ? imageRef : null}
-        scalable={true}
+        scalable
+        snappable
+        useResizeObserver
+        target={imageRef}
         keepRatio={keepRatio}
         origin={false}
         throttleScale={0}
         renderDirections={['se', 'nw', 'ne', 'sw']}
-        snappable={true}
         onScale={onScale}
         onScaleEnd={onScaleEnd}
         {...options.moveableProps}

@@ -2,8 +2,18 @@
   position: relative;
 }
 
+.node-imageComponent.ProseMirror-selectednode {
+  z-index: 1;
+}
+
+/* hide the moveable control box when not selected */
+.node-imageComponent:not(.ProseMirror-selectednode) .moveable-control-box {
+  display: none !important;
+}
+
 .image-component {
   position: relative;
+  user-select: auto;
 }
 
 .image-component img {
@@ -21,12 +31,18 @@
 }
 
 .image-component .ghost {
+  display: none;
+  pointer-events: none;
   position: absolute;
   top: 0;
 }
 
 .image-component .ghost > img {
   opacity: 0.3;
+}
+
+.node-imageComponent.ProseMirror-selectednode .ghost {
+  display: block;
 }
 
 p:has(span.node-imageComponent) {

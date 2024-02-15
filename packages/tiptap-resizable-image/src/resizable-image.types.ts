@@ -15,10 +15,13 @@ export interface ResizableImageOptions {
   defaultWidth: number;
   /** Default height of the image element. */
   defaultHeight: number;
-  /** Max width of the image element. */
+  /** Max width that the image element can be resized to. */
   maxWidth: number;
   /** Optional moveable props to override defaults. */
-  moveableProps?: Omit<ScalableProps, 'target' | 'scalable' | 'onScale' | 'onScaleEnd'>;
+  moveableProps?: Omit<
+    ScalableProps,
+    'target' | 'scalable' | 'onScale' | 'onScaleEnd'
+  >;
   /** Optional function to handle uploading when pasting and dropping image into the editor. */
   onUpload?: (file: File) => Promise<ResizableImageHTMLAttributes>;
   /** Optional function to handle context menu events. */
@@ -26,10 +29,7 @@ export interface ResizableImageOptions {
     /** The React mouse event. */
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
     /** The payload for the context menu event. */
-    payload: {
-      /** Function to control the focused state of the image. */
-      setFocused: (value: React.SetStateAction<boolean>) => void,
-    } & ResizableImageNodeViewRendererProps,
+    payload: ResizableImageNodeViewRendererProps
   ) => void;
 }
 
@@ -53,7 +53,9 @@ export interface ResizableImageHTMLAttributes {
   className?: string;
 }
 
-export type ResizableImageAttributes = Record<keyof ResizableImageHTMLAttributes, Attribute> | object;
+export type ResizableImageAttributes =
+  | Record<keyof ResizableImageHTMLAttributes, Attribute>
+  | object;
 
 type Node = NodeViewRendererProps['node'] & {
   attrs: ResizableImageHTMLAttributes;
@@ -65,7 +67,8 @@ interface Extension extends NodeViewRendererPropsExtension {
   options: ResizableImageOptions;
 }
 
-export interface ResizableImageNodeViewRendererProps extends NodeViewRendererProps {
+export interface ResizableImageNodeViewRendererProps
+  extends NodeViewRendererProps {
   updateAttributes(attrs: Partial<ResizableImageHTMLAttributes>): void;
   node: Node;
   extension: Extension;
@@ -79,7 +82,11 @@ interface InsertContentAtOptions {
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     imageComponent: {
-      setResizableImage(attrs: ResizableImageHTMLAttributes, position?: number | Range, options?: InsertContentAtOptions): ReturnType;
-    }
+      setResizableImage(
+        attrs: ResizableImageHTMLAttributes,
+        position?: number | Range,
+        options?: InsertContentAtOptions
+      ): ReturnType;
+    };
   }
 }
