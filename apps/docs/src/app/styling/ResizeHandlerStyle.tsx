@@ -3,13 +3,11 @@ import { CodeHighlightTabs, Heading } from '@/components';
 import GettingStartedExample from '../getting-started/GettingStartedExample';
 import classes from './ResizeHandlerStyle.module.css';
 
-const css = `.moveable-control.moveable-direction {
-  background-color: red;
-  border-radius: 0;
+const css = `.image-component {
+  --box-color: red;
 }
-.moveable-line.moveable-direction {
-  background-color: red;
-  height: 3px;
+.image-component .image-resizer {
+  border-radius: 0;
 }`;
 
 const ResizeHandlerStyle = async () => {

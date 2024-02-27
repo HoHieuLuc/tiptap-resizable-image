@@ -1,0 +1,8 @@
+.root {
+  :global(.image-resizer-n),
+  :global(.image-resizer-e),
+  :global(.image-resizer-s),
+  :global(.image-resizer-w) {
+    visibility: hidden;
+  }
+}

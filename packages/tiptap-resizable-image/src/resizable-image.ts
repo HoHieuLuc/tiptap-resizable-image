@@ -22,7 +22,10 @@ export default Node.create<ResizableImageOptions>({
       HTMLAttributes: {},
       defaultHeight: 500,
       defaultWidth: 500,
+      minWidth: 100,
       maxWidth: 16384,
+      minHeight: 100,
+      maxHeight: Infinity,
       allowBase64: true,
     };
   },

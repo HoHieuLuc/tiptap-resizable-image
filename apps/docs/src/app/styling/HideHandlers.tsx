@@ -1,16 +1,19 @@
 import { Stack } from '@mantine/core';
 import { CodeHighlightTabs, Heading } from '@/components';
 import GettingStartedExample from '../getting-started/GettingStartedExample';
-import classes from './GhostStyle.module.css';
+import classes from './HideHandlers.module.css';
 
-const css = `.ghost > img {
-  border: 1px solid red;
+const css = `.image-resizer-n,
+.image-resizer-e,
+.image-resizer-s,
+.image-resizer-w {
+  visibility: hidden;
 }`;
 
-const GhostStyle = () => {
+const HideHandlers = () => {
   return (
     <Stack className={classes.root}>
-      <Heading order={2} label='Change ghost style' />
+      <Heading order={2} label='Hide handlers' />
       <CodeHighlightTabs
         code={{ fileName: 'Demo.css', code: css, language: 'css' }}
       />
@@ -18,4 +21,4 @@ const GhostStyle = () => {
     </Stack>
   );
 };
-export default GhostStyle;
+export default HideHandlers;

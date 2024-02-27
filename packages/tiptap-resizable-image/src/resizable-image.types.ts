@@ -1,7 +1,6 @@
 import { Attribute, Range } from '@tiptap/core';
 import { ParseOptions } from '@tiptap/pm/model';
 import { NodeViewRendererProps } from '@tiptap/react';
-import { ScalableProps } from 'react-moveable';
 
 /**
  * ResizableImage extension options.
@@ -25,15 +24,25 @@ export interface ResizableImageOptions {
    */
   defaultHeight: number;
   /**
+   * Min width that the image element can be resized to.
+   * @default 100
+   */
+  minWidth: number;
+  /**
    * Max width that the image element can be resized to.
    * @default 16384
    */
   maxWidth: number;
-  /** Optional moveable props to override defaults. */
-  moveableProps?: Omit<
-    ScalableProps,
-    'target' | 'scalable' | 'onScale' | 'onScaleEnd'
-  >;
+  /**
+   * Min height that the image element can be resized to.
+   * @default 100
+   */
+  minHeight: number;
+  /**
+   * Max height that the image element can be resized to.
+   * @default Infinity
+   */
+  maxHeight: number;
   /**
    * Determines whether the caption should be displayed.
    * @default false

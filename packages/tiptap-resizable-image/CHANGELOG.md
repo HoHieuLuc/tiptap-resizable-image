@@ -1,5 +1,15 @@
 # tiptap-extension-resizable-image
 
+## 1.0.0
+
+### Major Changes
+
+- Replace react-moveable/Moveable component with custom ImageResizer component
+- New options: `minHeight`, `maxHeight`, `minWidth`
+
+**Breaking Changes**
+- `moveableProps` is no longer available. If you want to hide certain handlers, use CSS instead (see: [Hide handlers](https://tiptap-resizable-image.vercel.app/styling#hide-handlers))
+
 ## 0.5.0
 
 ### Minor Changes
