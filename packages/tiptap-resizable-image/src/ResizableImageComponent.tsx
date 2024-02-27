@@ -1,21 +1,13 @@
 import { CSSProperties, DataHTMLAttributes, useRef } from 'react';
-import {
-  makeMoveable,
-  OnScale,
-  OnScaleEnd,
-  Scalable,
-  ScalableProps,
-} from 'react-moveable';
 import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
 import CaptionInput from './CaptionInput';
+import ImageResizer from './ImageResizer';
 
 type ImageProps = React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 > &
   DataHTMLAttributes<HTMLImageElement>;
-
-const Moveable = makeMoveable<ScalableProps>([Scalable]);
 
 const ResizableImageComponent = (
   props: ResizableImageNodeViewRendererProps
@@ -44,27 +36,16 @@ const ResizableImageComponent = (
     },
   };
 
-  const onScale = (event: OnScale) => {
-    event.target.style.transform = event.drag.transform;
-  };
-
-  const onScaleEnd = (event: OnScaleEnd) => {
-    const rect = event.target.getBoundingClientRect();
-    if (rect.width <= options.maxWidth) {
-      updateAttributes({
-        width: rect.width,
-        height: rect.height,
-      });
-    } else {
-      const _height = keepRatio
-        ? options.maxWidth * (rect.height / rect.width)
-        : rect.height;
-      updateAttributes({
-        width: options.maxWidth,
-        height: _height,
-      });
+  const onResizeEnd = (nextWidth: number, nextHeight: number) => {
+    if (keepRatio && imageRef.current) {
+      imageRef.current.style.width = '';
+      imageRef.current.style.height = '';
     }
-    event.target.style.transform = '';
+
+    updateAttributes({
+      width: nextWidth,
+      height: nextHeight,
+    });
   };
 
   const onContextMenu = (
@@ -86,21 +67,12 @@ const ResizableImageComponent = (
     <>
       <img {...sharedImageProps} ref={imageRef} onContextMenu={onContextMenu} />
       {options.withCaption && <CaptionInput {...props} />}
-      <div className='ghost'>
-        <img {...sharedImageProps} />
-      </div>
-      <Moveable
-        scalable
-        snappable
-        useResizeObserver
-        target={imageRef}
+      <ImageResizer
+        editor={editor}
+        imageRef={imageRef}
+        maxWidth={options.maxWidth}
         keepRatio={keepRatio}
-        origin={false}
-        throttleScale={0}
-        renderDirections={['se', 'nw', 'ne', 'sw']}
-        onScale={onScale}
-        onScaleEnd={onScaleEnd}
-        {...options.moveableProps}
+        onResizeEnd={onResizeEnd}
       />
     </>
   );

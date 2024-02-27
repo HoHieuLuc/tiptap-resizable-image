@@ -6,11 +6,6 @@
   z-index: 1;
 }
 
-/* hide the moveable control box when not selected */
-.node-imageComponent:not(.ProseMirror-selectednode) .moveable-control-box {
-  display: none !important;
-}
-
 .image-component {
   position: relative;
   user-select: auto;
@@ -29,21 +24,6 @@
 
 .image-component img[data-keep-ratio='false'] {
   object-fit: fill;
-}
-
-.image-component .ghost {
-  display: none;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-}
-
-.image-component .ghost > img {
-  opacity: 0.3;
-}
-
-.node-imageComponent.ProseMirror-selectednode .ghost {
-  display: inline-flex;
 }
 
 /* caption input */
@@ -89,4 +69,82 @@ p:has(.node-imageComponent)[style*='text-align: left'] {
 
 p:has(.node-imageComponent)[style*='text-align: justify'] {
   justify-content: space-between;
+}
+
+/* image resizer */
+.image-component {
+  --box-color: rgb(60, 132, 244);
+}
+
+.node-imageComponent.ProseMirror-selectednode .image-resizer {
+  display: block;
+}
+
+.node-imageComponent.ProseMirror-selectednode .image-component {
+  outline: 2px solid var(--box-color);
+}
+
+.image-component .image-resizer {
+  --box-size: 14px;
+  --resizer-offset: calc(var(--box-size) / 2 + 1px);
+
+  display: none;
+  width: var(--box-size);
+  height: var(--box-size);
+  position: absolute;
+  background-color: var(--box-color);
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.image-component .image-resizer.image-resizer-n {
+  inset: calc(var(--resizer-offset) * -1) 0 auto;
+  margin: auto;
+  cursor: n-resize;
+}
+
+.image-component .image-resizer.image-resizer-ne {
+  top: calc(var(--resizer-offset) * -1);
+  right: calc(var(--resizer-offset) * -1);
+  cursor: ne-resize;
+}
+
+.image-component .image-resizer.image-resizer-e {
+  right: calc(var(--resizer-offset) * -1);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: e-resize;
+}
+
+.image-component .image-resizer.image-resizer-se {
+  bottom: calc(var(--resizer-offset) * -1);
+  right: calc(var(--resizer-offset) * -1);
+  cursor: nwse-resize;
+}
+
+.image-component .image-resizer.image-resizer-s {
+  inset: auto 0 calc(var(--resizer-offset) * -1);
+  margin: auto;
+  cursor: s-resize;
+}
+
+.image-component .image-resizer.image-resizer-sw {
+  bottom: calc(var(--resizer-offset) * -1);
+  left: calc(var(--resizer-offset) * -1);
+  cursor: sw-resize;
+}
+
+.image-component .image-resizer.image-resizer-w {
+  left: calc(var(--resizer-offset) * -1);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: w-resize;
+}
+
+.image-component .image-resizer.image-resizer-nw {
+  top: calc(var(--resizer-offset) * -1);
+  left: calc(var(--resizer-offset) * -1);
+  cursor: nw-resize;
 }

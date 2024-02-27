@@ -53,7 +53,6 @@
     "@types/react": "^18.2.42",
     "eslint-config-custom": "workspace:*",
     "react": "^18.2.0",
-    "react-moveable": "^0.54.2",
     "tsconfig": "workspace:*",
     "tsup": "^7.2.0"
   },
