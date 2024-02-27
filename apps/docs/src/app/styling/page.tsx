@@ -1,7 +1,7 @@
 import { Stack } from '@mantine/core';
 import { Heading } from '@/components';
 import ResizeHandlerStyle from './ResizeHandlerStyle';
-import GhostStyle from './GhostStyle';
+import HideHandlers from './HideHandlers';
 import { SITE_TITLE } from '@/config';
 import { Metadata } from 'next';
 
@@ -14,7 +14,7 @@ const Page = () => {
     <Stack>
       <Heading label='Styling' />
       <ResizeHandlerStyle />
-      <GhostStyle />
+      <HideHandlers />
     </Stack>
   );
 };
