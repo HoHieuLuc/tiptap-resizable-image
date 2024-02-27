@@ -14,6 +14,7 @@
 .image-component {
   position: relative;
   user-select: auto;
+  display: inline-flex;
 }
 
 .image-component img {
@@ -42,27 +43,50 @@
 }
 
 .node-imageComponent.ProseMirror-selectednode .ghost {
-  display: block;
+  display: inline-flex;
 }
 
-p:has(span.node-imageComponent) {
+/* caption input */
+.image-component > .caption {
+  z-index: 1;
+  cursor: text;
+  outline: none;
+  padding: 5px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  inset: auto 0 0;
+  margin: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.image-component > .caption::before {
+  position: absolute;
+}
+
+.image-component > .caption:empty::before {
+  content: var(--caption-placeholder, 'Enter a caption...');
+}
+
+p:has(.node-imageComponent) {
   display: flex;
   flex-wrap: wrap;
 }
 
 /* these styles are required for aligning the image */
-p:has(span.node-imageComponent)[style*='text-align: center'] {
+p:has(.node-imageComponent)[style*='text-align: center'] {
   justify-content: center;
 }
 
-p:has(span.node-imageComponent)[style*='text-align: right'] {
+p:has(.node-imageComponent)[style*='text-align: right'] {
   justify-content: flex-end;
 }
 
-p:has(span.node-imageComponent)[style*='text-align: left'] {
+p:has(.node-imageComponent)[style*='text-align: left'] {
   justify-content: flex-start;
 }
 
-p:has(span.node-imageComponent)[style*='text-align: justify'] {
+p:has(.node-imageComponent)[style*='text-align: justify'] {
   justify-content: space-between;
 }

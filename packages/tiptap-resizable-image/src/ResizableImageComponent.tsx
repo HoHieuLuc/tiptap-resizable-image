@@ -7,6 +7,7 @@ import {
   ScalableProps,
 } from 'react-moveable';
 import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
+import CaptionInput from './CaptionInput';
 
 type ImageProps = React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
@@ -73,12 +74,18 @@ const ResizableImageComponent = (
   };
 
   if (disabled) {
-    return <img {...sharedImageProps} />;
+    return (
+      <>
+        <img {...sharedImageProps} />
+        {options.withCaption && attrs.caption && <CaptionInput {...props} />}
+      </>
+    );
   }
 
   return (
     <>
       <img {...sharedImageProps} ref={imageRef} onContextMenu={onContextMenu} />
+      {options.withCaption && <CaptionInput {...props} />}
       <div className='ghost'>
         <img {...sharedImageProps} />
       </div>

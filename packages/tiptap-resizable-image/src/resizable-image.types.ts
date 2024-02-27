@@ -9,18 +9,40 @@ import { ScalableProps } from 'react-moveable';
 export interface ResizableImageOptions {
   /** HTML attributes for the resizable image. */
   HTMLAttributes: Record<string, unknown>;
-  /** Allow base 64 as src. */
+  /**
+   * Allow base 64 as src.
+   * @default true
+   */
   allowBase64: boolean;
-  /** Default width of the image element. */
+  /**
+   * Default width of the image element.
+   * @default 500
+   */
   defaultWidth: number;
-  /** Default height of the image element. */
+  /**
+   * Default height of the image element.
+   * @default 500
+   */
   defaultHeight: number;
-  /** Max width that the image element can be resized to. */
+  /**
+   * Max width that the image element can be resized to.
+   * @default 16384
+   */
   maxWidth: number;
   /** Optional moveable props to override defaults. */
   moveableProps?: Omit<
     ScalableProps,
     'target' | 'scalable' | 'onScale' | 'onScaleEnd'
+  >;
+  /**
+   * Determines whether the caption should be displayed.
+   * @default false
+   */
+  withCaption?: boolean;
+  /** Optional caption input props. */
+  captionProps?: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
   >;
   /** Optional function to handle uploading when pasting and dropping image into the editor. */
   onUpload?: (file: File) => Promise<ResizableImageHTMLAttributes>;
@@ -51,6 +73,8 @@ export interface ResizableImageHTMLAttributes {
   'data-keep-ratio'?: boolean;
   /** CSS class names for the image element. */
   className?: string;
+  /** Caption of the image. */
+  caption?: string;
 }
 
 export type ResizableImageAttributes =

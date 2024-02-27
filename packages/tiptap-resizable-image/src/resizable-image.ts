@@ -72,6 +72,15 @@ export default Node.create<ResizableImageOptions>({
         },
         default: '',
       },
+      caption: {
+        parseHTML: (element: HTMLElement) => {
+          return element.parentElement?.querySelector('span')?.textContent;
+        },
+        renderHTML() {
+          return null;
+        },
+        default: '',
+      }
     };
   },
 
@@ -82,23 +91,40 @@ export default Node.create<ResizableImageOptions>({
           ? 'img[src]'
           : 'img[src]:not([src^="data:"])',
       },
+      {
+        // Ignore image caption element
+        tag: 'span > img + span',
+        ignore: true,
+      },
     ];
   },
 
-  renderHTML({ HTMLAttributes }) {
-    return [
-      'span',
-      {
-        class: 'node-imageComponent',
-      },
-      [
-        'img',
-        mergeAttributes(
-          this.options.HTMLAttributes,
-          HTMLAttributes,
-        ),
-      ],
-    ];
+  renderHTML({ HTMLAttributes, node }) {
+    const root = document.createElement('span');
+    const image = document.createElement('img');
+    root.classList.add('node-imageComponent', 'image-component');
+
+    const imageAttributes = mergeAttributes(
+      this.options.HTMLAttributes,
+      HTMLAttributes,
+    );
+
+    Object.keys(imageAttributes).forEach((key) => {
+      if (key === 'caption') return;
+      image.setAttribute(key, imageAttributes[key]);
+    });
+
+    root.appendChild(image);
+
+    const attrs = node.attrs as ResizableImageHTMLAttributes;
+    if (attrs.caption) {
+      const caption = document.createElement('span');
+      caption.classList.add('caption');
+      caption.textContent = attrs.caption;
+      root.appendChild(caption);
+    }
+
+    return root;
   },
 
   addCommands() {
