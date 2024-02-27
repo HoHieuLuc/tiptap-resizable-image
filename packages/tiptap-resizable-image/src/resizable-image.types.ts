@@ -24,10 +24,25 @@ export interface ResizableImageOptions {
    */
   defaultHeight: number;
   /**
+   * Min width that the image element can be resized to.
+   * @default 100
+   */
+  minWidth: number;
+  /**
    * Max width that the image element can be resized to.
    * @default 16384
    */
   maxWidth: number;
+  /**
+   * Min height that the image element can be resized to.
+   * @default 100
+   */
+  minHeight: number;
+  /**
+   * Max height that the image element can be resized to.
+   * @default Infinity
+   */
+  maxHeight: number;
   /**
    * Determines whether the caption should be displayed.
    * @default false

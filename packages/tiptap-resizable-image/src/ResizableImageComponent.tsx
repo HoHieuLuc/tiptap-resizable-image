@@ -70,7 +70,10 @@ const ResizableImageComponent = (
       <ImageResizer
         editor={editor}
         imageRef={imageRef}
+        minWidth={options.minWidth}
         maxWidth={options.maxWidth}
+        minHeight={options.minHeight}
+        maxHeight={options.maxHeight}
         keepRatio={keepRatio}
         onResizeEnd={onResizeEnd}
       />

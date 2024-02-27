@@ -65,6 +65,7 @@ editor.commands.setResizableImage({
   height: 200,
   className: '',
   'data-keep-ratio': true,
+  caption: '',
 });
 ```
 

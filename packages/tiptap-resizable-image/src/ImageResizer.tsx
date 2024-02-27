@@ -1,6 +1,6 @@
 // see: https://github.com/facebook/lexical/blob/0361b50500f339e4e0f147d945362f00045f692d/packages/lexical-playground/src/ui/ImageResizer.tsx
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Editor } from '@tiptap/core';
 
 function clamp(value: number, min: number, max: number) {
@@ -29,16 +29,26 @@ interface Positioning {
 interface Props {
   editor: Editor;
   imageRef: { current: null | HTMLElement };
+  minWidth: number;
   maxWidth: number;
+  minHeight: number;
+  maxHeight: number;
   keepRatio?: boolean;
   onResizeEnd: (width: number, height: number) => void;
   onResizeStart?: () => void;
 }
 
-export default function ImageResizer(props: Props) {
-  const { editor, imageRef, maxWidth, keepRatio, onResizeEnd, onResizeStart } =
-    props;
-
+export default function ImageResizer({
+  editor,
+  imageRef,
+  minWidth,
+  maxWidth,
+  minHeight,
+  maxHeight,
+  keepRatio,
+  onResizeEnd,
+  onResizeStart,
+}: Props) {
   const controlWrapperRef = useRef<HTMLDivElement>(null);
 
   const userSelect = useRef({
@@ -59,11 +69,6 @@ export default function ImageResizer(props: Props) {
   });
 
   const editorRootElement = editor.view.dom;
-
-  const maxWidthContainer = maxWidth;
-
-  const minWidth = 100;
-  const minHeight = 100;
 
   const setStartCursor = (direction: number) => {
     const ew = direction === Direction.east || direction === Direction.west;
@@ -114,6 +119,12 @@ export default function ImageResizer(props: Props) {
       );
     }
   };
+
+  useEffect(() => {
+    return () => {
+      document.body.style.removeProperty('cursor');
+    };
+  }, []);
 
   const handlePointerDown = (
     event: React.PointerEvent<HTMLDivElement>,
@@ -169,13 +180,14 @@ export default function ImageResizer(props: Props) {
         let diff = Math.floor(positioning.startX - event.clientX);
         diff = positioning.direction & Direction.east ? -diff : diff;
 
-        const width = clamp(
-          positioning.startWidth + diff,
-          minWidth,
-          maxWidthContainer
-        );
+        let width = clamp(positioning.startWidth + diff, minWidth, maxWidth);
 
-        const height = width / positioning.ratio;
+        let height = width / positioning.ratio;
+
+        if (height > maxHeight) {
+          height = maxHeight;
+          width = height * positioning.ratio;
+        }
 
         image.style.width = `${width}px`;
         image.style.height = `${height}px`;
@@ -190,7 +202,7 @@ export default function ImageResizer(props: Props) {
         const height = clamp(
           positioning.startHeight + diff,
           minHeight,
-          Infinity
+          maxHeight
         );
 
         const width = height * positioning.ratio;
@@ -219,13 +231,13 @@ export default function ImageResizer(props: Props) {
       const width = clamp(
         positioning.startWidth + diffWidth,
         minWidth,
-        maxWidthContainer
+        maxWidth
       );
 
       const height = clamp(
         positioning.startHeight + diffHeight,
         minHeight,
-        Infinity
+        maxHeight
       );
 
       image.style.width = `${width}px`;
@@ -238,7 +250,11 @@ export default function ImageResizer(props: Props) {
       let diff = Math.floor(positioning.startY - event.clientY);
       diff = positioning.direction & Direction.south ? -diff : diff;
 
-      const height = clamp(positioning.startHeight + diff, minHeight, Infinity);
+      const height = clamp(
+        positioning.startHeight + diff,
+        minHeight,
+        maxHeight
+      );
 
       image.style.height = `${height}px`;
       positioning.currentHeight = height;
@@ -246,11 +262,7 @@ export default function ImageResizer(props: Props) {
       let diff = Math.floor(positioning.startX - event.clientX);
       diff = positioning.direction & Direction.east ? -diff : diff;
 
-      const width = clamp(
-        positioning.startWidth + diff,
-        minWidth,
-        maxWidthContainer
-      );
+      const width = clamp(positioning.startWidth + diff, minWidth, maxWidth);
 
       image.style.width = `${width}px`;
       image.style.maxWidth = `${width}px`;
