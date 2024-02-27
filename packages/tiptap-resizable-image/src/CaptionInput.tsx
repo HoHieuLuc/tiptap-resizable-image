@@ -12,7 +12,6 @@ const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
 
   const onBlur = (event: React.FocusEvent<HTMLSpanElement, Element>) => {
     updateAttributes({
-      ...attrs,
       caption: event.target.textContent || '',
     });
   };

@@ -1,4 +1,10 @@
-# tiptap-resizable-image
+# tiptap-extension-resizable-image
+
+## 0.5.0
+
+### Minor Changes
+
+- Add image caption
 
 ## 0.4.0
 
@@ -7,6 +13,7 @@
 - ResizableImageComponent: focus state is now based on ProseMirror-selectednode css class
 
 **Breaking Changes**
+
 - The `onContextMenu` payload no longer includes the `setFocused` function for controlling the focused state of the image
 
 ## 0.3.0
