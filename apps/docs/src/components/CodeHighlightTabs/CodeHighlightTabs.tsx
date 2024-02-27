@@ -24,7 +24,12 @@ function getFileIcon(fileName: string) {
 
 const CodeHighlightTabs = (props: CodeHighlightTabsProps) => {
   return (
-    <MCodeHighlightTabs getFileIcon={getFileIcon} withExpandButton {...props} />
+    <MCodeHighlightTabs
+      getFileIcon={getFileIcon}
+      withExpandButton
+      defaultExpanded={false}
+      {...props}
+    />
   );
 };
 export default CodeHighlightTabs;

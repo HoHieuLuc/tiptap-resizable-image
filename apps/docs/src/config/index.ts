@@ -46,6 +46,10 @@ export const ROUTES: Array<Route> = [
     },
     subLinks: [
       {
+        label: 'Image caption',
+        href: '/guides/caption',
+      },
+      {
         label: 'Pasting & dropping',
         href: '/guides/pasting-and-dropping',
       },

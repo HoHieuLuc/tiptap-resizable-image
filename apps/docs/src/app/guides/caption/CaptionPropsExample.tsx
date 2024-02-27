@@ -2,15 +2,24 @@
 
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import { CSSProperties } from 'react';
 import { ResizableImage } from 'tiptap-extension-resizable-image';
 
-const GettingStartedExample = () => {
+const CaptionPropsExample = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
       ResizableImage.configure({
         defaultWidth: 200,
         defaultHeight: 200,
+        withCaption: true,
+        captionProps: {
+          style: {
+            color: 'yellow',
+            fontStyle: 'italic',
+            '--caption-placeholder': '"Caption placeholder..."'
+          } as CSSProperties
+        }
       }),
     ],
     content: /* html */ `
@@ -33,4 +42,4 @@ const GettingStartedExample = () => {
   );
 };
 
-export default GettingStartedExample;
+export default CaptionPropsExample;
