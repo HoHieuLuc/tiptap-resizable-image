@@ -25,11 +25,11 @@ const Shell = ({ children }: Props) => {
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
       padding='md'
     >
-      <AppShell.Header>
+      <AppShell.Header zIndex={102}>
         <Header navbarOpened={opened} onNavbarToggle={toggle} />
       </AppShell.Header>
 
-      <AppShell.Navbar py='md'>
+      <AppShell.Navbar py='md' zIndex={102}>
         <Navbar />
       </AppShell.Navbar>
 
