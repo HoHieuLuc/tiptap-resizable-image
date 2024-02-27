@@ -54,10 +54,6 @@ export const ROUTES: Array<Route> = [
         href: '/guides/pasting-and-dropping',
       },
       {
-        label: 'Override moveable props',
-        href: '/guides/moveable-props',
-      },
-      {
         label: 'Context menu',
         href: '/guides/context-menu',
       },
