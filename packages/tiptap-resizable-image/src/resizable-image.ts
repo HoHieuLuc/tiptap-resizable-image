@@ -56,9 +56,7 @@ export default Node.create<ResizableImageOptions>({
             return {};
           }
           return {
-            style: [
-              `max-width: ${attributes.width as number}px`,
-            ].join(';'),
+            style: [`max-width: ${attributes.width as number}px`].join(';'),
             'data-keep-ratio': 'true',
           };
         },
@@ -83,7 +81,7 @@ export default Node.create<ResizableImageOptions>({
           return null;
         },
         default: '',
-      }
+      },
     };
   },
 
@@ -109,7 +107,7 @@ export default Node.create<ResizableImageOptions>({
 
     const imageAttributes = mergeAttributes(
       this.options.HTMLAttributes,
-      HTMLAttributes,
+      HTMLAttributes
     );
 
     Object.keys(imageAttributes).forEach((key) => {
@@ -122,7 +120,10 @@ export default Node.create<ResizableImageOptions>({
     const attrs = node.attrs as ResizableImageHTMLAttributes;
     if (attrs.caption) {
       const caption = document.createElement('span');
-      caption.classList.add('caption');
+      caption.classList.add(
+        'caption',
+        ...(this.options.captionProps?.className?.split(' ') || '')
+      );
       caption.textContent = attrs.caption;
       root.appendChild(caption);
     }
@@ -151,7 +152,7 @@ export default Node.create<ResizableImageOptions>({
       nodeInputRule({
         find: inputRegex,
         type: this.type,
-        getAttributes: match => {
+        getAttributes: (match) => {
           const [, , alt, src, title] = match;
 
           return { src, alt, title };
@@ -185,11 +186,13 @@ export default Node.create<ResizableImageOptions>({
             const position = this.editor.state.selection.head;
 
             for (const file of files) {
-              this.options.onUpload(file).then(attrs => {
+              this.options.onUpload(file).then((attrs) => {
                 this.editor
                   .chain()
                   .focus()
-                  .setResizableImage(attrs, position, { updateSelection: false })
+                  .setResizableImage(attrs, position, {
+                    updateSelection: false,
+                  })
                   .run();
               });
             }
@@ -208,11 +211,13 @@ export default Node.create<ResizableImageOptions>({
             const position = this.editor.state.selection.head;
 
             for (const file of files) {
-              this.options.onUpload(file).then(attrs => {
+              this.options.onUpload(file).then((attrs) => {
                 this.editor
                   .chain()
                   .focus()
-                  .setResizableImage(attrs, position, { updateSelection: false })
+                  .setResizableImage(attrs, position, {
+                    updateSelection: false,
+                  })
                   .run();
               });
             }
