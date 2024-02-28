@@ -7,7 +7,7 @@
     "lint": "turbo run lint",
     "vitest": "vitest",
     "typecheck": "turbo run typecheck",
-    "test": "turbo run lint typecheck && vitest",
+    "test": "turbo run lint typecheck && vitest --run",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build test && changeset version && changeset publish",
     "syncpack": "syncpack list-mismatches",

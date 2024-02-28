@@ -95,7 +95,7 @@ describe('resizable-image', () => {
     expect(caption.className).toBe('caption my-caption');
   });
 
-  it('should not render caption if it is empty' , () => {
+  it('should not render caption if it is empty', () => {
     const editor = createEditor({
       resizableImageOptions: {
         withCaption: true,

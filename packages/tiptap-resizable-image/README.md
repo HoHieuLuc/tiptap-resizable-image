@@ -1,4 +1,5 @@
 # `tiptap-extension-resizable-image`
+
 ![Pull request workflows](https://github.com/HoHieuLuc/tiptap-resizable-image/actions/workflows/pull_request.yml/badge.svg)
 [![NPM](https://img.shields.io/npm/l/tiptap-extension-resizable-image)](https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/tiptap-extension-resizable-image)](https://www.npmjs.com/package/tiptap-extension-resizable-image)
@@ -11,15 +12,21 @@
 - [Changelog](https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/packages/tiptap-resizable-image/CHANGELOG.md)
 
 ## Quickstart
+
 Installation
+
 ```sh
 npm install tiptap-extension-resizable-image
 ```
+
 Import the CSS file:
+
 ```tsx
 import 'tiptap-extension-resizable-image/styles.css';
 ```
+
 Add the extension to Tiptap:
+
 ```tsx
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -27,10 +34,7 @@ import { ResizableImage } from 'tiptap-extension-resizable-image';
 
 const Demo = () => {
   const editor = useEditor({
-    extensions: [
-      StarterKit,
-      ResizableImage,
-    ],
+    extensions: [StarterKit, ResizableImage],
     content: /* html */ `
       <p>
         <img
@@ -55,7 +59,9 @@ export default Demo;
 ```
 
 ## Commands
+
 ### setResizableImage
+
 ```tsx
 editor.commands.setResizableImage({
   src: '',
@@ -70,4 +76,5 @@ editor.commands.setResizableImage({
 ```
 
 ## License
+
 The [MIT License](https://github.com/HoHieuLuc/tiptap-resizable-image/blob/master/LICENSE).

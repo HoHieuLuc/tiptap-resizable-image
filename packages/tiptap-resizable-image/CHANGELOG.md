@@ -8,6 +8,7 @@
 - New options: `minHeight`, `maxHeight`, `minWidth`
 
 **Breaking Changes**
+
 - `moveableProps` is no longer available. If you want to hide certain handlers, use CSS instead (see: [Hide handlers](https://tiptap-resizable-image.vercel.app/styling#hide-handlers))
 
 ## 0.5.0
