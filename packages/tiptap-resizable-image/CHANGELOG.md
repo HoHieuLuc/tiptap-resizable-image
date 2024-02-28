@@ -1,5 +1,11 @@
 # tiptap-extension-resizable-image
 
+## 1.0.1
+
+### Patch Changes
+
+- Update readme
+
 ## 1.0.0
 
 ### Major Changes
