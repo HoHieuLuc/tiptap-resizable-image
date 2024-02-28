@@ -33,6 +33,7 @@
     "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
     "eslint-config-custom": "workspace:*",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "postcss": "^8.4.35",
     "postcss-preset-mantine": "^1.13.0",
     "postcss-simple-vars": "^7.0.1",
