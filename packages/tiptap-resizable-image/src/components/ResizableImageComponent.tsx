@@ -1,5 +1,5 @@
 import { CSSProperties, DataHTMLAttributes, useRef } from 'react';
-import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
+import { ResizableImageNodeViewRendererProps } from '../resizable-image.types';
 import CaptionInput from './CaptionInput';
 import ImageResizer from './ImageResizer';
 

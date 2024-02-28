@@ -1,4 +1,4 @@
-import { ResizableImageNodeViewRendererProps } from './resizable-image.types';
+import { ResizableImageNodeViewRendererProps } from '../resizable-image.types';
 
 const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
   const {

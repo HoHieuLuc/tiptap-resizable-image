@@ -1,12 +1,12 @@
 import { mergeAttributes, Node, nodeInputRule } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
+import { Plugin, PluginKey } from '@tiptap/pm/state';
 import {
   ResizableImageAttributes,
   ResizableImageHTMLAttributes,
   ResizableImageOptions,
 } from './resizable-image.types';
-import ResizableImageNodeView from './ResizableImageNodeView';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { ResizableImageNodeView } from './components';
 
 const inputRegex = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
 
