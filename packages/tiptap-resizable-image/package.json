@@ -47,10 +47,10 @@
     "lint": "eslint ./src"
   },
   "devDependencies": {
-    "@tiptap/core": "^2.1.13",
-    "@tiptap/pm": "^2.1.13",
-    "@tiptap/react": "^2.1.13",
-    "@types/react": "^18.2.42",
+    "@tiptap/core": "^2.2.4",
+    "@tiptap/pm": "^2.2.4",
+    "@tiptap/react": "^2.2.4",
+    "@types/react": "^18.2.60",
     "eslint-config-custom": "workspace:*",
     "react": "^18.2.0",
     "tsconfig": "workspace:*",

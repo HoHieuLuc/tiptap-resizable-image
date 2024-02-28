@@ -13,12 +13,12 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
-    "@turbo/gen": "^1.11.1",
+    "@turbo/gen": "^1.12.4",
     "eslint": "^8.55.0",
     "eslint-config-custom": "workspace:*",
     "prettier": "^2.8.8",
     "syncpack": "^11.2.1",
-    "turbo": "^1.11.1"
+    "turbo": "^1.12.4"
   },
   "packageManager": "pnpm@8.6.10",
   "name": "tiptap-resizable-image"
