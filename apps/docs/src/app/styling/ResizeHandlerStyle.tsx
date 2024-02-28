@@ -14,7 +14,9 @@ const ResizeHandlerStyle = async () => {
   return (
     <Stack className={classes.root}>
       <Heading order={2} label='Change handler style' />
-      <CodeHighlightTabs code={{ fileName: 'Demo.css', code: css, language: 'css' }} />
+      <CodeHighlightTabs
+        code={{ fileName: 'Demo.css', code: css, language: 'css' }}
+      />
       <GettingStartedExample />
     </Stack>
   );

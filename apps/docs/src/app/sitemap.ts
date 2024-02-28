@@ -4,7 +4,7 @@ import { MetadataRoute } from 'next';
 function flattenRoutes(routes: Array<Route>): Array<string> {
   let hrefs: Array<string> = [];
 
-  routes.forEach(route => {
+  routes.forEach((route) => {
     if (route.subLinks) {
       hrefs = hrefs.concat(flattenRoutes(route.subLinks));
     } else {
@@ -16,8 +16,9 @@ function flattenRoutes(routes: Array<Route>): Array<string> {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = flattenRoutes(ROUTES)
-    .filter((route) => route !== '/' && route.startsWith('/'));
+  const routes = flattenRoutes(ROUTES).filter(
+    (route) => route !== '/' && route.startsWith('/')
+  );
 
   return [
     {

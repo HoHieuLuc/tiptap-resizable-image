@@ -41,7 +41,11 @@ export default function RootLayout({ children }: Props) {
         <ColorSchemeScript defaultColorScheme='auto' />
       </head>
       <body>
-        <MantineProvider theme={theme} withCssVariables defaultColorScheme='auto'>
+        <MantineProvider
+          theme={theme}
+          withCssVariables
+          defaultColorScheme='auto'
+        >
           <ContextMenuProvider>
             <Shell>{children}</Shell>
           </ContextMenuProvider>

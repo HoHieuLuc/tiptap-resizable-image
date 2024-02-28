@@ -1,5 +1,13 @@
 import { ThemeIconProps } from '@mantine/core';
-import { TablerIconsProps, IconHome, IconRocket, IconBrandCss3, IconArrowGuide, IconHearts, IconList } from '@tabler/icons-react';
+import {
+  TablerIconsProps,
+  IconHome,
+  IconRocket,
+  IconBrandCss3,
+  IconArrowGuide,
+  IconHearts,
+  IconList,
+} from '@tabler/icons-react';
 
 export const REPO_LINK = 'https://github.com/HoHieuLuc/tiptap-resizable-image';
 export const NPM_LINK = 'https://www.npmjs.com/package/tiptap-extension-resizable-image';

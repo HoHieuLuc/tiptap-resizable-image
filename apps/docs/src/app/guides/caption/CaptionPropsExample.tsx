@@ -17,9 +17,9 @@ const CaptionPropsExample = () => {
           style: {
             color: 'yellow',
             fontStyle: 'italic',
-            '--caption-placeholder': '"Caption placeholder..."'
-          } as CSSProperties
-        }
+            '--caption-placeholder': '"Caption placeholder..."',
+          } as CSSProperties,
+        },
       }),
     ],
     content: /* html */ `

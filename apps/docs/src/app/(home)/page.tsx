@@ -1,13 +1,12 @@
-import {
-  Button,
-  Group,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core';
+import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import Link from 'next/link';
 import classes from './page.module.css';
-import { IconBrandGithub, IconFlame, IconLifebuoy, IconScale } from '@tabler/icons-react';
+import {
+  IconBrandGithub,
+  IconFlame,
+  IconLifebuoy,
+  IconScale,
+} from '@tabler/icons-react';
 import Jumbotron from './Jumbotron';
 import { REPO_LINK } from '@/config';
 

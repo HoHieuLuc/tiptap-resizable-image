@@ -34,9 +34,7 @@ const Shell = ({ children }: Props) => {
       </AppShell.Navbar>
 
       <AppShell.Main className={classes.main}>
-        <div className='container'>
-          {children}
-        </div>
+        <div className='container'>{children}</div>
         <Footer />
       </AppShell.Main>
     </AppShell>

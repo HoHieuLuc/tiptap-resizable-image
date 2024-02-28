@@ -6,10 +6,7 @@ interface Props {
 }
 
 const readFile = async ({ path, replaces }: Props) => {
-  let content = await fs.readFile(
-    `${process.cwd()}/src${path}`,
-    'utf8'
-  );
+  let content = await fs.readFile(`${process.cwd()}/src${path}`, 'utf8');
 
   replaces?.forEach(([oldValue, newValue]) => {
     content = content.replaceAll(oldValue, newValue);
