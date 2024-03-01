@@ -1,5 +1,11 @@
 # tiptap-extension-resizable-image
 
+## 1.0.2
+
+### Patch Changes
+
+- fix minWidth, minHeight, maxWidth, maxHeight not working correctly
+
 ## 1.0.1
 
 ### Patch Changes
