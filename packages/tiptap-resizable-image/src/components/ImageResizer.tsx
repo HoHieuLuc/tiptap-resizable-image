@@ -1,6 +1,6 @@
 // see: https://github.com/facebook/lexical/blob/0361b50500f339e4e0f147d945362f00045f692d/packages/lexical-playground/src/ui/ImageResizer.tsx
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Editor } from '@tiptap/core';
 
 function clamp(value: number, min: number, max: number) {
@@ -51,11 +51,6 @@ export default function ImageResizer({
 }: Props) {
   const controlWrapperRef = useRef<HTMLDivElement>(null);
 
-  const userSelect = useRef({
-    priority: '',
-    value: 'default',
-  });
-
   const positioningRef = useRef<Positioning>({
     currentHeight: 0,
     currentWidth: 0,
@@ -92,12 +87,6 @@ export default function ImageResizer({
         `${cursorDir}-resize`,
         'important'
       );
-      userSelect.current.value = document.body.style.getPropertyValue(
-        '-webkit-user-select'
-      );
-      userSelect.current.priority = document.body.style.getPropertyPriority(
-        '-webkit-user-select'
-      );
       document.body.style.setProperty(
         '-webkit-user-select',
         `none`,
@@ -108,23 +97,13 @@ export default function ImageResizer({
 
   const setEndCursor = () => {
     if (editorRootElement !== null) {
-      editorRootElement.style.setProperty('cursor', 'text');
+      editorRootElement.style.removeProperty('cursor');
     }
     if (document.body !== null) {
-      document.body.style.setProperty('cursor', 'default');
-      document.body.style.setProperty(
-        '-webkit-user-select',
-        userSelect.current.value,
-        userSelect.current.priority
-      );
+      document.body.style.removeProperty('cursor');
+      document.body.style.removeProperty('-webkit-user-select');
     }
   };
-
-  useEffect(() => {
-    return () => {
-      document.body.style.removeProperty('cursor');
-    };
-  }, []);
 
   const handlePointerDown = (
     event: React.PointerEvent<HTMLDivElement>,
@@ -162,6 +141,7 @@ export default function ImageResizer({
       document.addEventListener('pointerup', handlePointerUp);
     }
   };
+
   const handlePointerMove = (event: PointerEvent) => {
     const image = imageRef.current;
     const positioning = positioningRef.current;
@@ -176,45 +156,39 @@ export default function ImageResizer({
     }
 
     if (keepRatio) {
+      let width = 0;
+      let height = 0;
+
       if (isHorizontal) {
         let diff = Math.floor(positioning.startX - event.clientX);
         diff = positioning.direction & Direction.east ? -diff : diff;
 
-        let width = clamp(positioning.startWidth + diff, minWidth, maxWidth);
+        width = clamp(positioning.startWidth + diff, minWidth, maxWidth);
 
-        let height = width / positioning.ratio;
-
-        if (height > maxHeight) {
-          height = maxHeight;
-          width = height * positioning.ratio;
-        }
-
-        image.style.width = `${width}px`;
-        image.style.height = `${height}px`;
-        image.style.maxWidth = `${width}px`;
-
-        positioning.currentHeight = height;
-        positioning.currentWidth = width;
+        height = width / positioning.ratio;
       } else {
         let diff = Math.floor(positioning.startY - event.clientY);
         diff = positioning.direction & Direction.south ? -diff : diff;
 
-        const height = clamp(
-          positioning.startHeight + diff,
-          minHeight,
-          maxHeight
-        );
+        height = clamp(positioning.startHeight + diff, minHeight, maxHeight);
 
-        const width = height * positioning.ratio;
-
-        image.style.width = `${width}px`;
-        image.style.height = `${height}px`;
-        image.style.maxWidth = `${width}px`;
-
-        positioning.currentHeight = height;
-        positioning.currentWidth = width;
+        width = height * positioning.ratio;
       }
 
+      if (width < minWidth || width > maxWidth) {
+        return;
+      }
+
+      if (height < minHeight || height > maxHeight) {
+        return;
+      }
+
+      image.style.width = `${width}px`;
+      image.style.height = `${height}px`;
+      image.style.maxWidth = `${width}px`;
+
+      positioning.currentHeight = height;
+      positioning.currentWidth = width;
       return;
     }
 
@@ -295,6 +269,7 @@ export default function ImageResizer({
       document.removeEventListener('pointerup', handlePointerUp);
     }
   };
+
   return (
     <div ref={controlWrapperRef}>
       <div
