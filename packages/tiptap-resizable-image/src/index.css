@@ -39,6 +39,11 @@
   margin: auto;
   white-space: pre-wrap;
   word-break: break-word;
+  min-height: 35px;
+  max-height: 100%;
+  overflow-y: auto;
+  font-size: initial;
+  font-weight: initial;
 }
 
 .image-component > .caption::before {
