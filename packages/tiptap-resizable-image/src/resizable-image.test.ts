@@ -1,3 +1,4 @@
+import { ResizableImageHTMLAttributes } from './resizable-image.types';
 import { createEditor, minifyHtml, userEvent } from './test-utils';
 
 // Add jest-prosemirror assertions
@@ -11,7 +12,7 @@ describe('resizable-image', () => {
     </p>
   `;
 
-  const imageProps = {
+  const defaultImageProps = {
     src: 'src',
     alt: 'alt',
     title: 'title',
@@ -22,17 +23,20 @@ describe('resizable-image', () => {
     class: 'class',
   };
 
-  const image = document.createElement('img');
+  const defaultImage = document.createElement('img');
 
-  Object.keys(imageProps).forEach((key) => {
-    image.setAttribute(key, imageProps[key as keyof typeof imageProps]);
+  Object.keys(defaultImageProps).forEach((key) => {
+    defaultImage.setAttribute(
+      key,
+      defaultImageProps[key as keyof typeof defaultImageProps]
+    );
   });
 
   it('renders html correctly', () => {
     const expectedContent = /* html */ `
       <p>
         <span class="node-imageComponent image-component">
-          ${image.outerHTML}
+          ${defaultImage.outerHTML}
         </span>
       </p>
     `;
@@ -40,7 +44,7 @@ describe('resizable-image', () => {
     const editor = createEditor({
       content: /* html */ `
         <p>
-          ${image.outerHTML}
+          ${defaultImage.outerHTML}
         </p>
       `,
     });
@@ -57,14 +61,14 @@ describe('resizable-image', () => {
       content: defaultContent,
     });
 
-    const _image = editor.view.dom.querySelector('img');
+    const image = editor.view.dom.querySelector('img');
 
-    if (!_image) {
+    if (!image) {
       throw new Error('Image not found');
     }
 
-    expect(_image.width).toBe(defaultWidth);
-    expect(_image.height).toBe(defaultHeight);
+    expect(image.width).toBe(defaultWidth);
+    expect(image.height).toBe(defaultHeight);
   });
 
   it('renders caption correctly', () => {
@@ -118,6 +122,44 @@ describe('resizable-image', () => {
     expect(captions.length).toBe(0);
   });
 
+  it('setResizableImage command should work correctly', () => {
+    const editor = createEditor({
+      resizableImageOptions: {
+        withCaption: true,
+      },
+    });
+
+    const imageAttrs: ResizableImageHTMLAttributes = {
+      src: 'https://src.com/src.png',
+      alt: 'alt',
+      title: 'title',
+      width: 300,
+      height: 200,
+      'data-keep-ratio': true,
+      className: 'my-image',
+      caption: 'Image\ncaption',
+    };
+
+    editor.commands.setResizableImage(imageAttrs);
+
+    const imageRoot = editor.view.dom.querySelector('.image-component');
+    const image = imageRoot?.querySelector('img');
+    const caption = imageRoot?.querySelector('img + span');
+
+    if (!imageRoot || !image || !caption) {
+      throw new Error('Image not found');
+    }
+
+    expect(image.src).toBe(imageAttrs.src);
+    expect(image.alt).toBe(imageAttrs.alt);
+    expect(image.title).toBe(imageAttrs.title);
+    expect(image.width).toBe(imageAttrs.width);
+    expect(image.height).toBe(imageAttrs.height);
+    expect(image.className).toBe(imageAttrs.className);
+    expect(image.dataset.keepRatio).toBe('true');
+    expect(caption.textContent).toBe(imageAttrs.caption);
+  });
+
   // TODO
   it.skip('triggers context menu on right click', async () => {
     const onContextMenu = vi.fn();
@@ -129,13 +171,13 @@ describe('resizable-image', () => {
       content: defaultContent,
     });
 
-    const _image = editor.view.dom.querySelector('img');
+    const image = editor.view.dom.querySelector('img');
 
-    if (!_image) {
+    if (!image) {
       throw new Error('Image not found');
     }
 
-    await userEvent.pointer({ keys: '[MouseRight>]', target: _image });
+    await userEvent.pointer({ keys: '[MouseRight>]', target: image });
 
     expect(onContextMenu).toHaveBeenCalled();
   });
