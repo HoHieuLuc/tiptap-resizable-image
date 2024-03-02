@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { ResizableImageNodeViewRendererProps } from '../resizable-image.types';
 
 const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
@@ -10,20 +11,31 @@ const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
 
   const { captionProps } = extension.options;
 
+  const ref = useRef<HTMLSpanElement>(null);
+
   const onBlur = (event: React.FocusEvent<HTMLSpanElement, Element>) => {
+    if (!ref.current) return;
+
+    const { innerText, innerHTML } = event.target;
+    const isEmpty = innerText?.replaceAll('\n', '') === '';
+
+    const formattedHTML = innerHTML
+      .replaceAll('<div>', '\n')
+      .replaceAll('</div>', '')
+      .replaceAll('<br>', '');
+
+    const value = isEmpty ? '' : formattedHTML;
+
+    ref.current.innerHTML = value;
     updateAttributes({
-      caption: event.target.textContent || '',
+      caption: value,
     });
   };
 
   const onPaste = (event: React.ClipboardEvent<HTMLSpanElement>) => {
     event.preventDefault();
 
-    // strip the html tags
-    const text = event.clipboardData
-      .getData('text/plain')
-      .replace('<', '&lt;')
-      .replace('>', '&gt;');
+    const text = event.clipboardData.getData('text/plain');
     const selection = window.getSelection();
 
     if (selection && text) {
@@ -51,15 +63,16 @@ const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
   return (
     <span
       {...captionProps}
-      className={`caption ${captionProps?.className}`}
+      ref={ref}
+      className={`caption ${captionProps?.className || ''}`}
       contentEditable={editor.isEditable}
-      suppressContentEditableWarning
       onBlur={onBlur}
       onPaste={onPaste}
       onKeyDown={onKeyDown}
-    >
-      {attrs.caption}
-    </span>
+      dangerouslySetInnerHTML={{
+        __html: attrs.caption || '',
+      }}
+    />
   );
 };
 

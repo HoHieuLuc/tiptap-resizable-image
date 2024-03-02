@@ -35,8 +35,10 @@ describe('resizable-image', () => {
   it('renders html correctly', () => {
     const expectedContent = /* html */ `
       <p>
-        <span class="node-imageComponent image-component">
-          ${defaultImage.outerHTML}
+        <span class="node-imageComponent">
+          <span class="image-component">
+            ${defaultImage.outerHTML}
+          </span>
         </span>
       </p>
     `;

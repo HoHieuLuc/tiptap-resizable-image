@@ -102,8 +102,11 @@ export default Node.create<ResizableImageOptions>({
 
   renderHTML({ HTMLAttributes, node }) {
     const root = document.createElement('span');
+    root.classList.add('node-imageComponent');
+
+    const imageWrapper = document.createElement('span');
+    imageWrapper.classList.add('image-component');
     const image = document.createElement('img');
-    root.classList.add('node-imageComponent', 'image-component');
 
     const imageAttributes = mergeAttributes(
       this.options.HTMLAttributes,
@@ -115,7 +118,7 @@ export default Node.create<ResizableImageOptions>({
       image.setAttribute(key, imageAttributes[key]);
     });
 
-    root.appendChild(image);
+    imageWrapper.appendChild(image);
 
     const attrs = node.attrs as ResizableImageHTMLAttributes;
     if (attrs.caption) {
@@ -124,9 +127,11 @@ export default Node.create<ResizableImageOptions>({
         'caption',
         ...(this.options.captionProps?.className?.split(' ') || '')
       );
-      caption.textContent = attrs.caption;
-      root.appendChild(caption);
+      caption.innerHTML = attrs.caption;
+      imageWrapper.appendChild(caption);
     }
+
+    root.appendChild(imageWrapper);
 
     return root;
   },

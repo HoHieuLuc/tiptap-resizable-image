@@ -93,6 +93,7 @@ p:has(.node-imageComponent)[style*='text-align: justify'] {
   --box-size: 14px;
   --resizer-offset: calc(var(--box-size) / 2 + 1px);
 
+  z-index: 2;
   display: none;
   width: var(--box-size);
   height: var(--box-size);
