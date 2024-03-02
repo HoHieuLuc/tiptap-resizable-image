@@ -1,5 +1,12 @@
 # tiptap-extension-resizable-image
 
+## 1.0.3
+
+### Patch Changes
+
+- Fix caption line breaks not working correctly
+- Prevent caption from overflowing outside of image
+
 ## 1.0.2
 
 ### Patch Changes
