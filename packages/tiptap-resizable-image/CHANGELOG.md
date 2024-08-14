@@ -1,5 +1,11 @@
 # tiptap-extension-resizable-image
 
+## 1.0.4
+
+### Patch Changes
+
+- Fix tsconfig error ([#5](https://github.com/HoHieuLuc/tiptap-resizable-image/pull/5))
+
 ## 1.0.3
 
 ### Patch Changes
