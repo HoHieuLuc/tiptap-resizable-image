@@ -29,6 +29,7 @@ const MantineTiptapExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

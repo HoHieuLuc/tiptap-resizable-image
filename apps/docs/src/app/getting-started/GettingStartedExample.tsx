@@ -24,6 +24,7 @@ const GettingStartedExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

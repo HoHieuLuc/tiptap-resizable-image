@@ -16,7 +16,7 @@ const PastingAndDroppingExample = () => {
           const src = URL.createObjectURL(file);
           return {
             src,
-            'data-keep-ratio': true,
+            'data-keep-ratio': false,
           };
         },
       }),
@@ -33,6 +33,7 @@ const PastingAndDroppingExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

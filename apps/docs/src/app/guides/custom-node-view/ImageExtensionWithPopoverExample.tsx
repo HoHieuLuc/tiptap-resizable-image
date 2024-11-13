@@ -28,6 +28,7 @@ const ImageExtensionWithPopoverExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

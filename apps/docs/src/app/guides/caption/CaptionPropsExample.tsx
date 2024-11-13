@@ -33,6 +33,7 @@ const CaptionPropsExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

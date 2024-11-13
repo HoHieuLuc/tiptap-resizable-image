@@ -25,6 +25,7 @@ const SimpleImageExtensionExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

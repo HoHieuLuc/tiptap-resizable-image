@@ -42,6 +42,7 @@ const ContextMenuExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (

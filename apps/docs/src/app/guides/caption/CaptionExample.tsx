@@ -37,6 +37,7 @@ const CaptionExample = () => {
         >
       </p>
     `,
+    immediatelyRender: false,
   });
 
   return (
