@@ -6,6 +6,10 @@
   z-index: 1;
 }
 
+.node-imageComponent + img.ProseMirror-separator {
+  width: 1px !important;
+}
+
 .image-component {
   position: relative;
   user-select: auto;
@@ -17,8 +21,6 @@
 }
 
 .image-component img[data-keep-ratio]:not([data-keep-ratio='false']) {
-  width: 100%;
-  height: auto;
   object-fit: contain;
 }
 
