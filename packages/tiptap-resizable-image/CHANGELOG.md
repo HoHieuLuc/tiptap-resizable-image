@@ -1,5 +1,11 @@
 # tiptap-extension-resizable-image
 
+## 1.0.5
+
+### Patch Changes
+
+- Fix image resizing to allow dimensions beyond original size ([#6](https://github.com/HoHieuLuc/tiptap-resizable-image/issues/6))
+
 ## 1.0.4
 
 ### Patch Changes
