@@ -25,7 +25,7 @@ const CaptionPropsExample = () => {
     content: /* html */ `
       <p>
         <img
-          src="https://daily.jstor.org/wp-content/uploads/2016/10/Moving_Forest_1050_700.jpg"
+          src="/example.jpg"
           alt="image alt"
           title="image title"
           width="300"
