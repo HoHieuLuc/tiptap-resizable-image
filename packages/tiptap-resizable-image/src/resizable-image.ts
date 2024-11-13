@@ -4,6 +4,7 @@ import { Plugin, PluginKey } from '@tiptap/pm/state';
 import {
   ResizableImageAttributes,
   ResizableImageHTMLAttributes,
+  ResizableImageNodeViewRendererProps,
   ResizableImageOptions,
 } from './resizable-image.types';
 import { ResizableImageNodeView } from './components';
@@ -233,6 +234,10 @@ export default Node.create<ResizableImageOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ResizableImageNodeView);
+    return ReactNodeViewRenderer((props) =>
+      ResizableImageNodeView(
+        props as unknown as ResizableImageNodeViewRendererProps
+      )
+    );
   },
 });

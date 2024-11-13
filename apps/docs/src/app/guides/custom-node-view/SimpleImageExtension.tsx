@@ -21,6 +21,8 @@ const NodeView = (props: ResizableImageNodeViewRendererProps) => {
 
 export const SimpleImageExtension = ResizableImage.extend({
   addNodeView() {
-    return ReactNodeViewRenderer(NodeView);
+    return ReactNodeViewRenderer((props) =>
+      NodeView(props as unknown as ResizableImageNodeViewRendererProps)
+    );
   },
 });
