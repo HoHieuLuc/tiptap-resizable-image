@@ -1,5 +1,11 @@
 # tiptap-extension-resizable-image
 
+## 1.0.6
+
+### Patch Changes
+
+- Fix cursor disappearing after inserting space next to image ([#7](https://github.com/HoHieuLuc/tiptap-resizable-image/issues/7))
+
 ## 1.0.5
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "tiptap-extension-resizable-image",
   "description": "Resizable image extension for Tiptap",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "author": "HoHieuLuc <luchohieu@gmail.com>",
   "homepage": "https://tiptap-resizable-image.vercel.app",
