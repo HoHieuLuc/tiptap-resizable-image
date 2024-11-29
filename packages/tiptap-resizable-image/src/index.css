@@ -56,28 +56,6 @@
   content: var(--caption-placeholder, 'Enter a caption...');
 }
 
-p:has(.node-imageComponent) {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* these styles are required for aligning the image */
-p:has(.node-imageComponent)[style*='text-align: center'] {
-  justify-content: center;
-}
-
-p:has(.node-imageComponent)[style*='text-align: right'] {
-  justify-content: flex-end;
-}
-
-p:has(.node-imageComponent)[style*='text-align: left'] {
-  justify-content: flex-start;
-}
-
-p:has(.node-imageComponent)[style*='text-align: justify'] {
-  justify-content: space-between;
-}
-
 /* image resizer */
 .image-component {
   --box-color: rgb(60, 132, 244);
