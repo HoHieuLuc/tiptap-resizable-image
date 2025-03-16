@@ -1,5 +1,12 @@
 # tiptap-extension-resizable-image
 
+## 1.0.7
+
+### Patch Changes
+
+- Fix incorrect image size on upload ([#8](https://github.com/HoHieuLuc/tiptap-resizable-image/issues/8))
+- Fix incorrect image position on drop
+
 ## 1.0.6
 
 ### Patch Changes
