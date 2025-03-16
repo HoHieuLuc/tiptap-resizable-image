@@ -243,7 +243,7 @@ export default Node.create<ResizableImageOptions>({
             }
             return true;
           },
-          handleDrop: (_, dragEvent) => {
+          handleDrop: (view, dragEvent) => {
             dragEvent.preventDefault();
             const files = dragEvent.dataTransfer?.files;
 
@@ -253,7 +253,7 @@ export default Node.create<ResizableImageOptions>({
               return false;
             }
 
-            const position = this.editor.state.selection.head;
+            const coordinates = view.posAtCoords({ left: dragEvent.clientX, top: dragEvent.clientY });
 
             for (const file of files) {
               this.options
@@ -263,7 +263,7 @@ export default Node.create<ResizableImageOptions>({
                   this.editor
                     .chain()
                     .focus()
-                    .setResizableImage(attrs, position, {
+                    .setResizableImage(attrs, coordinates?.pos, {
                       updateSelection: false,
                     })
                     .run();

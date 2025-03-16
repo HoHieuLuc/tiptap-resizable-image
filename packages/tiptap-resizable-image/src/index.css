@@ -1,5 +1,6 @@
 .node-imageComponent {
   position: relative;
+  display: inline-block;
 }
 
 .node-imageComponent.ProseMirror-selectednode {
