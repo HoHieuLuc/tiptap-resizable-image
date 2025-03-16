@@ -11,6 +11,42 @@ import { ResizableImageNodeView } from './components';
 
 const inputRegex = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
 
+const getImageDimensions = (
+  file: File
+): Promise<{ width: number; height: number }> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const objectURL = URL.createObjectURL(file);
+
+    img.onload = () => {
+      resolve({ width: img.width, height: img.height });
+      URL.revokeObjectURL(objectURL);
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(objectURL);
+      reject(new Error('Failed to load image'));
+    };
+
+    img.src = objectURL;
+  });
+};
+
+const adjustImageSize = async (
+  attrs: ResizableImageHTMLAttributes,
+  file: File,
+  options: ResizableImageOptions
+) => {
+  if (!attrs['data-keep-ratio']) {
+    return Promise.resolve(attrs);
+  }
+
+  const { width: imgWidth, height: imgHeight } = await getImageDimensions(file);
+  const width = attrs.width ?? options.defaultWidth;
+  const ratio = imgHeight / imgWidth;
+  return { ...attrs, width, height: width * ratio };
+};
+
 export default Node.create<ResizableImageOptions>({
   name: 'imageComponent',
   group: 'inline',
@@ -192,15 +228,18 @@ export default Node.create<ResizableImageOptions>({
             const position = this.editor.state.selection.head;
 
             for (const file of files) {
-              this.options.onUpload(file).then((attrs) => {
-                this.editor
-                  .chain()
-                  .focus()
-                  .setResizableImage(attrs, position, {
-                    updateSelection: false,
-                  })
-                  .run();
-              });
+              this.options
+                .onUpload(file)
+                .then((attrs) => adjustImageSize(attrs, file, this.options))
+                .then((attrs) => {
+                  this.editor
+                    .chain()
+                    .focus()
+                    .setResizableImage(attrs, position, {
+                      updateSelection: false,
+                    })
+                    .run();
+                });
             }
             return true;
           },
@@ -217,15 +256,18 @@ export default Node.create<ResizableImageOptions>({
             const position = this.editor.state.selection.head;
 
             for (const file of files) {
-              this.options.onUpload(file).then((attrs) => {
-                this.editor
-                  .chain()
-                  .focus()
-                  .setResizableImage(attrs, position, {
-                    updateSelection: false,
-                  })
-                  .run();
-              });
+              this.options
+                .onUpload(file)
+                .then((attrs) => adjustImageSize(attrs, file, this.options))
+                .then((attrs) => {
+                  this.editor
+                    .chain()
+                    .focus()
+                    .setResizableImage(attrs, position, {
+                      updateSelection: false,
+                    })
+                    .run();
+                });
             }
           },
         },
