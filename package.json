@@ -22,7 +22,6 @@
     "@turbo/gen": "^1.12.4",
     "eslint": "^8.55.0",
     "eslint-config-custom": "workspace:*",
-    "jest-prosemirror": "^2.1.5",
     "jsdom": "^24.0.0",
     "prettier": "^2.8.8",
     "syncpack": "^11.2.1",

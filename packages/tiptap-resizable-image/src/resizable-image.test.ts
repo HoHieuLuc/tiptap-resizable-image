@@ -1,7 +1,6 @@
 import { ResizableImageHTMLAttributes } from './resizable-image.types';
 import { createEditor, minifyHtml, userEvent } from './test-utils';
 
-// Add jest-prosemirror assertions
 describe('resizable-image', () => {
   const defaultWidth = 200;
   const defaultHeight = 200;

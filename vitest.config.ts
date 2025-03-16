@@ -4,6 +4,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['jest-prosemirror/environment', 'vitest.setup.ts'],
+    setupFiles: ['vitest.setup.ts'],
   },
 });
