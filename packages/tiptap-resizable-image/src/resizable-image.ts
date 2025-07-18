@@ -48,7 +48,7 @@ const adjustImageSize = async (
 };
 
 export default Node.create<ResizableImageOptions>({
-  name: 'imageComponent',
+  name: 'image',
   group: 'inline',
   inline: true,
   draggable: true,
@@ -139,7 +139,7 @@ export default Node.create<ResizableImageOptions>({
 
   renderHTML({ HTMLAttributes, node }) {
     const root = document.createElement('span');
-    root.classList.add('node-imageComponent');
+    root.classList.add('node-image');
 
     const imageWrapper = document.createElement('span');
     imageWrapper.classList.add('image-component');
@@ -211,7 +211,7 @@ export default Node.create<ResizableImageOptions>({
           handlePaste: (_, clipboardEvent, slice) => {
             const files = clipboardEvent.clipboardData?.files;
 
-            // handle pasting imageComponent content
+            // handle pasting image content
             if (slice.content.firstChild?.type.name === this.name) {
               this.editor.commands.setResizableImage({
                 ...(slice.content.firstChild.attrs as ResizableImageHTMLAttributes),
