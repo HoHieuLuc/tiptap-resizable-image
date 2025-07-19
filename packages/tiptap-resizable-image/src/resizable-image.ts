@@ -276,10 +276,14 @@ export default Node.create<ResizableImageOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer((props) =>
-      ResizableImageNodeView(
-        props as unknown as ResizableImageNodeViewRendererProps
-      )
+    return ReactNodeViewRenderer(
+      (props) =>
+        ResizableImageNodeView(
+          props as unknown as ResizableImageNodeViewRendererProps
+        ),
+      {
+        className: 'node-image',
+      }
     );
   },
 });

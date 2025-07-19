@@ -10,7 +10,7 @@ const css = `.image-component {
   border-radius: 0;
 }`;
 
-const ResizeHandlerStyle = async () => {
+const ResizeHandlerStyle = () => {
   return (
     <Stack className={classes.root}>
       <Heading order={2} label='Change handler style' />

@@ -1,5 +1,49 @@
 # tiptap-extension-resizable-image
 
+## 2.0.0
+
+### Major Changes
+
+**Breaking Changes**
+
+- Renamed node name from `imageComponent` to `image`, and CSS class from `.node-imageComponent` to `.node-image`. Update your code if you're referencing these names directly.
+- If you're storing the content as JSON (`editor.getJSON()`), you must update them by replacing all instances of `"type": "imageComponent"` with `"type": "image"` in your DB or code.
+
+  **Example**
+
+  ```json
+  {
+    "type": "doc",
+    "content": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "imageComponent" // => "image"
+            // ...
+          }
+        ]
+      }
+    ]
+  }
+  ```
+
+  **Workaround (not recommended):**
+  If you really can't migrate your stored JSON, you can still use the old name:
+
+  ```ts
+  ResizableImage.extend({
+    name: 'imageComponent',
+  }).configure({
+    defaultWidth: 200,
+    defaultHeight: 200,
+  });
+  ```
+
+  > ⚠️ **Warning:** This workaround is not recommended. It may cause confusion, complicate upgrades, and lead to bugs down the line. It's better to migrate your stored data instead.
+
+- If you're storing the content as HTML (`editor.getHTML()`), you don’t need to do anything.
+
 ## 1.0.7
 
 ### Patch Changes
