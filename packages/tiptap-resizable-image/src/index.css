@@ -1,13 +1,13 @@
-.node-imageComponent {
+.node-image {
   position: relative;
   display: inline-block;
 }
 
-.node-imageComponent.ProseMirror-selectednode {
+.node-image.ProseMirror-selectednode {
   z-index: 1;
 }
 
-.node-imageComponent + img.ProseMirror-separator {
+.node-image + img.ProseMirror-separator {
   width: 1px !important;
 }
 
@@ -62,11 +62,11 @@
   --box-color: rgb(60, 132, 244);
 }
 
-.node-imageComponent.ProseMirror-selectednode .image-resizer {
+.node-image.ProseMirror-selectednode .image-resizer {
   display: block;
 }
 
-.node-imageComponent.ProseMirror-selectednode .image-component {
+.node-image.ProseMirror-selectednode .image-component {
   outline: 2px solid var(--box-color);
 }
 
