@@ -1,5 +1,13 @@
 # docs
 
+## 1.0.17
+
+### Patch Changes
+
+- Add support for manual captions
+- Updated dependencies
+  - tiptap-extension-resizable-image@2.1.0
+
 ## 1.0.16
 
 ### Patch Changes
