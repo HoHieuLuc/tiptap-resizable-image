@@ -20,8 +20,9 @@ const ResizableImageComponent = (
   const options = extension.options;
   const disabled = !editor.isEditable;
 
-  const { width, height } = attrs;
+  const { width, height, caption } = attrs;
   const keepRatio = attrs['data-keep-ratio'];
+  const withCaption = options.withCaption || typeof caption === 'string';
 
   const style: CSSProperties | false = !keepRatio && {
     width,
@@ -58,7 +59,7 @@ const ResizableImageComponent = (
     return (
       <>
         <img {...sharedImageProps} />
-        {options.withCaption && attrs.caption && <CaptionInput {...props} />}
+        {withCaption && caption && <CaptionInput {...props} />}
       </>
     );
   }
@@ -66,7 +67,7 @@ const ResizableImageComponent = (
   return (
     <>
       <img {...sharedImageProps} ref={imageRef} onContextMenu={onContextMenu} />
-      {options.withCaption && <CaptionInput {...props} />}
+      {withCaption && <CaptionInput {...props} />}
       <ImageResizer
         editor={editor}
         imageRef={imageRef}

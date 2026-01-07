@@ -117,7 +117,7 @@ export default Node.create<ResizableImageOptions>({
         renderHTML() {
           return null;
         },
-        default: '',
+        default: undefined,
       },
     };
   },
@@ -214,14 +214,21 @@ export default Node.create<ResizableImageOptions>({
             // handle pasting image content
             if (slice.content.firstChild?.type.name === this.name) {
               this.editor.commands.setResizableImage({
-                ...(slice.content.firstChild.attrs as ResizableImageHTMLAttributes),
+                ...(slice.content.firstChild
+                  .attrs as ResizableImageHTMLAttributes),
               });
               return true;
             }
 
-            const isPastedFromFileSystem = !clipboardEvent.clipboardData?.getData('text/html');
+            const isPastedFromFileSystem =
+              !clipboardEvent.clipboardData?.getData('text/html');
 
-            if (!files || files.length === 0 || !this.options.onUpload || !isPastedFromFileSystem) {
+            if (
+              !files ||
+              files.length === 0 ||
+              !this.options.onUpload ||
+              !isPastedFromFileSystem
+            ) {
               return false;
             }
 
@@ -247,13 +254,22 @@ export default Node.create<ResizableImageOptions>({
             dragEvent.preventDefault();
             const files = dragEvent.dataTransfer?.files;
 
-            const isDroppedFromFileSystem = !dragEvent.dataTransfer?.getData('text/html');
+            const isDroppedFromFileSystem =
+              !dragEvent.dataTransfer?.getData('text/html');
 
-            if (!files || files.length === 0 || !this.options.onUpload || !isDroppedFromFileSystem) {
+            if (
+              !files ||
+              files.length === 0 ||
+              !this.options.onUpload ||
+              !isDroppedFromFileSystem
+            ) {
               return false;
             }
 
-            const coordinates = view.posAtCoords({ left: dragEvent.clientX, top: dragEvent.clientY });
+            const coordinates = view.posAtCoords({
+              left: dragEvent.clientX,
+              top: dragEvent.clientY,
+            });
 
             for (const file of files) {
               this.options

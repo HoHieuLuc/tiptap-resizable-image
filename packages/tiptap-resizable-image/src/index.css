@@ -30,7 +30,7 @@
 }
 
 /* caption input */
-.image-component > .caption {
+.image-component .caption {
   z-index: 1;
   cursor: text;
   outline: none;
@@ -49,11 +49,11 @@
   font-weight: initial;
 }
 
-.image-component > .caption::before {
+.image-component .caption::before {
   position: absolute;
 }
 
-.image-component > .caption:empty::before {
+.image-component .caption:empty::before {
   content: var(--caption-placeholder, 'Enter a caption...');
 }
 

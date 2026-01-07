@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import CaptionExample from './CaptionExample';
 import readFile from '@/utils/read-file';
 import CaptionPropsExample from './CaptionPropsExample';
+import CaptionManualExample from './CaptionManualExample';
 
 export const metadata: Metadata = {
   title: `Image caption | ${SITE_TITLE}`,
@@ -19,6 +20,11 @@ const Page = async () => {
   const captionPropsExampleCode = await readFile({
     path: '/app/guides/caption/CaptionPropsExample.tsx',
     replaces: [['CaptionPropsExample', 'Demo']],
+  });
+
+  const captionManualExampleCode = await readFile({
+    path: '/app/guides/caption/CaptionManualExample.tsx',
+    replaces: [['CaptionManualExample', 'Demo']],
   });
 
   return (
@@ -50,6 +56,24 @@ const Page = async () => {
         }}
       />
       <CaptionPropsExample />
+      <Heading order={2} label='Manually adding caption' />
+      <Text>
+        You can also add a caption manually by calling{' '}
+        <Code>updateAttributes</Code> and setting <Code>caption</Code> to a
+        string. To remove it, simply set <Code>caption</Code> to{' '}
+        <Code>undefined</Code>.
+      </Text>
+      <Text>
+        This only works when <Code>withCaption</Code> is <Code>false</Code>.
+      </Text>
+      <CodeHighlightTabs
+        code={{
+          fileName: 'Demo.tsx',
+          code: captionManualExampleCode,
+          language: 'tsx',
+        }}
+      />
+      <CaptionManualExample />
     </Stack>
   );
 };

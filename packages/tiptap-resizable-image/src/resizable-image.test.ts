@@ -123,6 +123,66 @@ describe('resizable-image', () => {
     expect(captions.length).toBe(0);
   });
 
+  it('should add caption when updating image attributes', () => {
+    const editor = createEditor({
+      resizableImageOptions: {},
+      content: /* html */ `
+        <p>
+          <span>
+            <img src="" />
+          </span>
+        </p>
+      `,
+    });
+
+    const pos = editor.view.posAtDOM(editor.view.dom.querySelector('img')!, 0);
+    editor.commands.setNodeSelection(pos);
+    editor.commands.updateAttributes('image', {
+      caption: 'Image caption',
+    });
+
+    const caption = editor.view.dom.querySelector('img + span');
+
+    if (!caption) {
+      throw new Error('Caption not found');
+    }
+
+    expect(caption.textContent).toBe('Image caption');
+  });
+
+  it('should remove caption when updating image attributes', () => {
+    const editor = createEditor({
+      resizableImageOptions: {},
+    });
+
+    const imageAttrs: ResizableImageHTMLAttributes = {
+      src: 'https://src.com/src.png',
+      alt: 'alt',
+      title: 'title',
+      width: 300,
+      height: 200,
+      'data-keep-ratio': true,
+      className: 'my-image',
+      caption: 'Image caption',
+    };
+
+    editor.commands.setResizableImage(imageAttrs);
+
+    const pos = editor.view.posAtDOM(editor.view.dom.querySelector('img')!, 0);
+    editor.commands.setNodeSelection(pos);
+    editor.commands.updateAttributes('image', {
+      caption: undefined,
+    });
+
+    const caption = editor.view.dom.querySelector('img + span');
+
+    if (caption) {
+      throw new Error('Caption not removed');
+    }
+
+    expect(caption).toBeNull();
+  });
+
   it('setResizableImage command should work correctly', () => {
     const editor = createEditor({
       resizableImageOptions: {

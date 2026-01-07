@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ResizableImageNodeViewRendererProps } from '../resizable-image.types';
 
 const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
@@ -12,6 +12,16 @@ const CaptionInput = (props: ResizableImageNodeViewRendererProps) => {
   const { captionProps } = extension.options;
 
   const ref = useRef<HTMLSpanElement>(null);
+
+  // Auto focus when caption is added manually
+  useEffect(() => {
+    if (extension.options.withCaption) {
+      return;
+    }
+    if (attrs.caption === '') {
+      ref.current?.focus();
+    }
+  }, [attrs.caption, extension.options.withCaption]);
 
   const onBlur = (event: React.FocusEvent<HTMLSpanElement, Element>) => {
     if (!ref.current) return;
